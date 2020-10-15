@@ -14,7 +14,7 @@ public class Asignatura {
 
     @Id@GeneratedValue
     private Long id;
-    private String nombre;
+    private String nombreAsig;
 
 
     // Mantenemos esta lista, pero no añadimos helpers
@@ -31,9 +31,7 @@ public class Asignatura {
 
 
 
-    public Asignatura(String nombre) {
-        this.nombre = nombre;
-    }
+
 
 
 }

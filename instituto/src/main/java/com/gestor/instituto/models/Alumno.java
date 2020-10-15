@@ -1,18 +1,18 @@
 package com.gestor.instituto.models;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 @Entity
-@DiscriminatorValue("A")
-@NoArgsConstructor @AllArgsConstructor
 public class Alumno extends Usuario{
 
 
