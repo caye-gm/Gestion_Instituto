@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@NoArgsConstructor @AllArgsConstructor
-@MappedSuperclass
-public class Usuario {
+ @NoArgsConstructor @AllArgsConstructor
+ @MappedSuperclass
+public abstract class Usuario {
 
-    @Id@GeneratedValue
+    @Id@GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String email;
     private String password;
