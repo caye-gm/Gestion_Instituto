@@ -32,6 +32,8 @@ public class Alumno extends Usuario{
     private List<SolicitudAmpliacionMatricula> SolicitudAmpliacionMatricula = new ArrayList<>();
 
 
+    @ManyToOne
+    private Curso curso;
 
 
 
@@ -39,7 +41,8 @@ public class Alumno extends Usuario{
         super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac);
     }
 
-
-
-
+    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, Curso curso) {
+        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac);
+        this.curso = curso;
+    }
 }

@@ -24,12 +24,15 @@ public class Asignatura {
     @OneToMany(mappedBy="asignatura", fetch = FetchType.EAGER)
     private List<SituacionExepcional> situacionExepcional = new ArrayList<>();
 
+    //onetomany
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(mappedBy="asignatura", fetch = FetchType.EAGER)
     private List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula = new ArrayList<>();
 
-
+    //many to one a curso
+    @ManyToOne
+    private Curso curso;
 
 
 
