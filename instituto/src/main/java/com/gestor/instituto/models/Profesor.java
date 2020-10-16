@@ -10,11 +10,10 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 public class Profesor extends Usuario{
 
@@ -30,7 +29,7 @@ public class Profesor extends Usuario{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // TODO Auto-generated method stub
         String role = "ROLE_";
-        if (esJefeDeEstudio==true) {
+        if (esJefeDeEstudio) {
             role += "JE";
         } else {
             role += "PROFESOR";

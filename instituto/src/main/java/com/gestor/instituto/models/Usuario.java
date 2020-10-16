@@ -2,18 +2,17 @@ package com.gestor.instituto.models;
 
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
-
+@Getter@Setter
 @NoArgsConstructor @AllArgsConstructor
- @MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
 public abstract class Usuario implements UserDetails {
 
     private static final long serialVersionUID = 4932924958521868350L;

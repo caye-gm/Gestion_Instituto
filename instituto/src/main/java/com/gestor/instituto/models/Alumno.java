@@ -11,11 +11,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
+@NoArgsConstructor@AllArgsConstructor
 @Entity
 public class Alumno extends Usuario{
 
