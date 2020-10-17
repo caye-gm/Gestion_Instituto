@@ -22,23 +22,18 @@
                                     <div class="card-body">
 
                                         <form method="POST" action="#" th:action="@{/login}">
-                                            <div class="form-group" >
-                                                <label class="small mb-1" for="username">Email</label>
-                                                <input class="form-control py-4" id="username" name="username" type="email" placeholder="Enter email address" required/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="password">Password</label>
-                                                <input class="form-control py-4" id="password" type="password" name="password" placeholder="Enter password" required/>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
+
+                                            <label for="username">Usuario:</label>
+                                            <input type="text" class="form-control" placeholder="Introduce el usuario" name="username" id="username"
+                                                   required>
+
+
+                                            <label for="pass">Contraseña:</label>
+                                            <input type="password" name="password" class="form-control" placeholder="Contraseña" id="password" required>
+
+                                            <div class="text-center">
+                                                <br>
+                                                <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                                             </div>
                                         </form>
 
@@ -47,7 +42,7 @@
 
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="register.html">¿Tienes el codigo de activacón? Click aqui</a></div>
                                     </div>
                                 </div>
                             </div>

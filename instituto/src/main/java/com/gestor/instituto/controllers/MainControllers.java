@@ -12,4 +12,13 @@ public class MainControllers {
     public String login() {
         return "login";
     }
+
+
+
+    @GetMapping("/acceso-denegado")
+    public String accessoDenegado() {
+        return "401";
+    }
+
+
 }
