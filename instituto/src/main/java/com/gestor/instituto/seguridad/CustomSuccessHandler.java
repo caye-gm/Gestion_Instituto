@@ -55,11 +55,11 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         }
 
         if (isJefe(roles)) {
-            url = "/jefe/";
+            url = "/jefe_de_estudio/";
         } else if (isAlumno(roles)) {
             url = "/alumno/";
         } else if(isProfe(roles)){
-            url = "/profe/";
+            url = "/profesor/";
         }else {
             url = "/login";
         }

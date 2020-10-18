@@ -25,14 +25,11 @@ public abstract class Usuario implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
-    @Column(unique = true)
     private String nombre;
-    @Column(unique = true)
     private String apellidos;
     @Column(unique = true)
     private String dni;
     private String numeroTlf;
-    @Column(unique = true)
     private LocalDate fecha_nac;
 
     @Override
