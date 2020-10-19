@@ -15,7 +15,7 @@ public class Asignatura {
     @Id@GeneratedValue
     private Long id;
     private String nombreAsig;
-
+    private String estado;
 
     // Mantenemos esta lista, pero no añadimos helpers
     // Si queremos rellenar la lista, realizamos un JOIN FETCH
