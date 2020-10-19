@@ -106,32 +106,26 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Registrar</h3></div>
                                     <div class="card-body">
 
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"
-                                           required>
 
-                                    <label for="apellido">Apellidos:</label>
-                                    <input type="text" class="form-control" placeholder="Introduce el nombre" name="apellido" id="apellido"
-                                           required>
+                                    <form th:object="${alumnoRegistro}" method="POST" action="#" th:action="@{/jefe_de_estudio/alumnoRegistro/submit}">
+
+                                    <label for="nombre"> Nombre:</label>
+                                    <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
+
+                                    <label for="apellidos">Apellidos:</label>
+                                    <input type="text" class="form-control" placeholder="Introduce los apellidos" name="apellidos" id="apellidos" th:field="*{apellidos}" required>
 
                                     <label for="dni">DNI:</label>
-                                    <input type="text" class="form-control" placeholder="Introduce el dni" name="dni" id="dni"
-                                           required>
+                                    <input type="text" class="form-control" placeholder="Introduce el dni" name="dni" id="dni"  th:field="*{dni}" required>
 
-                                    <label for="telefono">Teléfono:</label>
-                                    <input type="text" class="form-control" placeholder="Introduce el telefono" name="telefono" id="telefono"
-                                           required>
+                                    <label for="numeroTlf">Teléfono:</label>
+                                    <input type="text" class="form-control" placeholder="Introduce el telefono" name="numeroTlf" id="numeroTlf"  th:field="*{numeroTlf}" required>
 
                                     <label for="email">Email:</label>
-                                    <input type="text" class="form-control" placeholder="Introduce el email" name="email" id="email"
-                                           required>
-
-
-                                    <label for="password">Contraseña:</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Contraseña" id="password" required>
+                                    <input type="text" class="form-control" placeholder="Introduce el email" name="email" id="email" th:field="*{email}" required>
 
                                     <label for="fecha_nac">Fecha Nacimiento:</label>
-                                    <input type="date" name="fecha_nac" class="form-control" placeholder="fecha de nacimiento" id="fecha_nac" required>
+                                    <input type="date" name="fecha_nac" class="form-control" placeholder="fecha de nacimiento" id="fecha_nac" th:value="*{fecha_nac}" required>
 
 
                                     <div class="text-center">

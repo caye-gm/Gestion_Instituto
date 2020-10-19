@@ -24,17 +24,17 @@ public class InstitutoApplication {
 	public CommandLineRunner init(EnvioEmail eE,ProfesorService ProfS, AlumnoService AlumS, PasswordEncoder passwordEncoder) {
 		return args -> {
 
-			Alumno a1=new Alumno(3, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "+34 684213930", LocalDate.now());
+			Alumno a1=new Alumno(3, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "+34 684213930", LocalDate.now(),"23");
 
 			AlumS.save(a1);
 
-			Profesor p1=new Profesor(2,"luismi@gmail.com",passwordEncoder.encode("1234"),"Luismi","Lopez","4200000000Z","+34 955213930",LocalDate.now(),false);
-			Profesor p2=new Profesor(1,"angel@gmail.com",passwordEncoder.encode("1234"),"Angel","Lopez","4100000000Z","+34 955213930",LocalDate.now(),true);
+			Profesor p1=new Profesor(2,"luismi@gmail.com",passwordEncoder.encode("1234"),"Luismi","Lopez","4200000000Z","+34 955213930",LocalDate.now(),"fsd",false);
+			Profesor p2=new Profesor(1,"angel@gmail.com",passwordEncoder.encode("1234"),"Angel","Lopez","4100000000Z","+34 955213930",LocalDate.now(),"fds",true);
 
 			ProfS.save(p1);
 			ProfS.save(p2);
 
-			eE.sendEmail(a1,"prueba","esto es una prueba para developers");
+			//eE.sendEmail(a1,"prueba","esto es una prueba para developers");
 		};
 
 

@@ -38,14 +38,12 @@ public class Alumno extends Usuario{
     @ManyToOne
     private Curso curso;
 
-
-
-    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac) {
-        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac);
+    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion) {
+        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion);
     }
 
-    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, Curso curso) {
-        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac);
+    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, Curso curso) {
+        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion);
         this.curso = curso;
     }
 

@@ -11,4 +11,7 @@ public class AlumnoService extends BaseService<Alumno, Long, AlumnoRepository> {
     public AlumnoService(AlumnoRepository repo) {
         super(repo);
     }
+
+
+    ///
 }

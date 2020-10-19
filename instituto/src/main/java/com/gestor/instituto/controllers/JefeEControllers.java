@@ -1,22 +1,37 @@
 package com.gestor.instituto.controllers;
 
+import com.gestor.instituto.models.Alumno;
+import com.gestor.instituto.models.Profesor;
 import com.gestor.instituto.models.Usuario;
+import com.gestor.instituto.service.EnvioEmail;
+import com.gestor.instituto.service.ProfesorService;
+import com.gestor.instituto.service.UsuarioService;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/jefe_de_estudio")
 public class JefeEControllers {
 
+        @Autowired
+        UsuarioService uS;
+        @Autowired
+        EnvioEmail eE;
+        @Autowired
+        ProfesorService pS;
+
+
+
         @GetMapping("/")
         public String index() {
             return "/jefe_de_estudio/index";
         }
+
 
         @GetMapping("/alumnos")
         public String alumnos() {
@@ -24,18 +39,37 @@ public class JefeEControllers {
         }
 
         @GetMapping("/alumnoRegistro")
-        public String alumnoRegistro() {
+        public String alumnoRegistro(Model m ) {
+                m.addAttribute("alumnoRegistro",new Alumno());
                 return "/jefe_de_estudio/alumnoRegistro";
         }
+        @PostMapping("/alumnoRegistro/submit")
+        public String alumnoRegistroSubmit(@ModelAttribute("alumnoRegistro") Alumno usu) {
+                pS.nuevoAlumno(usu);
+                return "redirect:/jefe_de_estudio/alumnoRegistro";
+        }
+
+
+
+
         @GetMapping("/docentes")
         public String docentes() {
                 return "/jefe_de_estudio/docentes";
         }
-
         @GetMapping("/docenteRegistro")
-        public String docenteRegistro() {
+        public String docenteRegistro(Model m) {
+                m.addAttribute("docenteRegistro",new Alumno());
                 return "/jefe_de_estudio/docenteRegistro";
         }
+        
+        @PostMapping("/docenteRegistro/submit")
+        public String docenteRegistroSubmit(@ModelAttribute("docenteRegistro") Profesor prof) {
+                pS.nuevoProfesor(prof);
+                return "redirect:/jefe_de_estudio/docenteRegistro";
+        }
+
+
+
 
         @GetMapping("/cursos")
         public String cursos() {
