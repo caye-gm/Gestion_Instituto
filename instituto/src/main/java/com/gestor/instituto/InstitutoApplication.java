@@ -3,6 +3,7 @@ package com.gestor.instituto;
 import com.gestor.instituto.models.Alumno;
 import com.gestor.instituto.models.Profesor;
 import com.gestor.instituto.service.AlumnoService;
+import com.gestor.instituto.service.EnvioEmail;
 import com.gestor.instituto.service.ProfesorService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +21,7 @@ public class InstitutoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner init(ProfesorService ProfS, AlumnoService AlumS, PasswordEncoder passwordEncoder) {
+	public CommandLineRunner init(EnvioEmail eE,ProfesorService ProfS, AlumnoService AlumS, PasswordEncoder passwordEncoder) {
 		return args -> {
 
 			Alumno a1=new Alumno(3, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "+34 684213930", LocalDate.now());
@@ -32,6 +33,8 @@ public class InstitutoApplication {
 
 			ProfS.save(p1);
 			ProfS.save(p2);
+
+			eE.sendEmail(a1,"prueba","esto es una prueba para developers");
 		};
 
 
