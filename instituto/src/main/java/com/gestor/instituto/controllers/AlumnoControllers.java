@@ -13,5 +13,15 @@ public class AlumnoControllers {
         return "/alumno/index";
     }
 
+    @GetMapping("/convalidacion")
+    public String covalidacion() {
+        return "/alumno/convalidacion";
+    }
+
+    @GetMapping("/extincion")
+    public String extincion() {
+        return "/alumno/extincion";
+    }
+
 
 }

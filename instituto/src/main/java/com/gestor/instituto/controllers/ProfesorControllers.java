@@ -8,10 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/profesor")
 public class ProfesorControllers {
 
+
+
     @GetMapping("/")
     public String index() {
-
         return "/profesor/index";
+    }
+    @GetMapping("/alumnos")
+    public String alumnos() {
+        return "/profesor/alumnos";
+    }
+    @GetMapping("/cursos")
+    public String cursos() {
+        return "/profesor/cursos";
+    }
+    @GetMapping("/titulos")
+    public String titulos() {
+        return "/profesor/titulos";
     }
 
 
