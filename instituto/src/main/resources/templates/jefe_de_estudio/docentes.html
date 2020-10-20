@@ -144,7 +144,6 @@
                                                 <th>JefeEstudio(si/no)</th>
                                                 <th>Validación</th>
                                                 <th>Estado(alta/baja)</th>
-
                                                 <th>Editar</th>
                                             </tr>
                                         </tfoot>
@@ -159,7 +158,7 @@
                                             <td th:text="${docente.numeroTlf}">Telefono</td>
                                             <td th:text="${docente.esJefeDeEstudio}">Jefe de estudio</td>
                                             <td th:text="${docente.validacion}">Validación</td>
-                                            <td>Estado(alta/baja)</td>
+                                            <td th:text="${docente.estado}">Validación</td>
                                             <td>editar<i class="far fa-edit"></i></a></td>
                                         </tr>
 

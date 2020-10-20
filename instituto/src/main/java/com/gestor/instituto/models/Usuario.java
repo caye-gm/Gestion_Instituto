@@ -34,7 +34,7 @@ public abstract class Usuario implements UserDetails {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fecha_nac;
     private String validacion;
-    private String estado;
+    private boolean estado;
 
     @Override
     public String getPassword() {

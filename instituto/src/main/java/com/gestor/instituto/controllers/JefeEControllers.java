@@ -32,8 +32,9 @@ public class JefeEControllers {
 
 
         @GetMapping("/")
-        public String index() {
-            return "/jefe_de_estudio/index";
+        public String index(@AuthenticationPrincipal Usuario u,Model m) {
+                m.addAttribute("usuario",u.getEmail());
+                return "/jefe_de_estudio/index";
         }
 
 

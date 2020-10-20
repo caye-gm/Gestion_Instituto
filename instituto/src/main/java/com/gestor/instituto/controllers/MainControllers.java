@@ -44,15 +44,11 @@ public class MainControllers {
         u1=usuarioService.buscarPorEmail(email);
         Usuario usuario=usuarioService.findById(u1.get().getId());
 
-
         if (usuario.getValidacion().equalsIgnoreCase(validacion)){
             usuario.setPassword(encoder.encode(password));
             usuarioService.edit(usuario);
         }
-
-
-
-        return "redirect:/registro";
+        return "redirect:/login";
     }
 
 

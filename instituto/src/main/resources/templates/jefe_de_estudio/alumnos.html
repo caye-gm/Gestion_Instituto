@@ -126,8 +126,8 @@
                                                 <th>Correo electronico</th>
                                                 <th>DNI</th>
                                                 <th>NºTeléfono</th>
-                                                <th>Fecha de Nacimiento</th>
-                                                <th>Estado(alta/baja)</th>
+                                                <th>Validación</th>
+                                                <th>Estado</th>
                                                 <th>Editar</th>
 
                                             </tr>
@@ -139,8 +139,8 @@
                                                 <th>Correo electronico</th>
                                                 <th>DNI</th>
                                                 <th>NºTeléfono</th>
-                                                <th>Fecha de Nacimiento</th>
-                                                <th>Estado(alta/baja)</th>
+                                                <th>Validación</th>
+                                                <th>Estado</th>
                                                 <th>Editar</th>
                                             </tr>
                                         </tfoot>
@@ -149,12 +149,13 @@
                                         <tr th:each="alumno : ${listaAlumnos}">
 
                                             <td th:text="${alumno.nombre}">Nombre</td>
-                                            <td th:text="${alumno.apellidos}">DNI</td>
+                                            <td th:text="${alumno.apellidos}">apellidos</td>
                                             <td th:text="${alumno.email}">Email</td>
-                                            <td th:text="${alumno.dni}">Teléfono</td>
+                                            <td th:text="${alumno.dni}">dni</td>
                                             <td th:text="${alumno.numeroTlf}">Telefono</td>
                                             <td th:text="${alumno.validacion}">Validación</td>
-                                            <td>estado</td>
+                                            <td th:text="${alumno.estado}">Estado</td>
+
                                             <td>editar<i class="far fa-edit"></i></a></td>
                                         </tr>
 

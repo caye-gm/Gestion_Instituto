@@ -18,19 +18,19 @@ import java.util.List;
 @Entity
 public class Alumno extends Usuario{
 
-    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, String estado, Curso curso) {
+    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, boolean estado, Curso curso) {
         super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion, estado);
         this.curso = curso;
     }
 
 
 
-    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, String estado, List<SituacionExepcional> situacionExepcional) {
+    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, boolean estado, List<SituacionExepcional> situacionExepcional) {
         super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion, estado);
         this.situacionExepcional = situacionExepcional;
     }
 
-    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, String estado) {
+    public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, boolean estado) {
         super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion, estado);
     }
 
