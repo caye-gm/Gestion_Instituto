@@ -19,12 +19,12 @@ public class Profesor extends Usuario{
 
     private boolean esJefeDeEstudio;
 
-    public Profesor(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion) {
-        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion);
+    public Profesor(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, String estado) {
+        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion, estado);
     }
 
-    public Profesor(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, boolean esJefeDeEstudio) {
-        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion);
+    public Profesor(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, String estado, boolean esJefeDeEstudio) {
+        super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion, estado);
         this.esJefeDeEstudio = esJefeDeEstudio;
     }
 

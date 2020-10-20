@@ -126,11 +126,13 @@
                                             <label for="fecha_nac">Fecha Nacimiento:</label>
                                             <input type="date" name="fecha_nac" class="form-control" placeholder="fecha de nacimiento" id="fecha_nac" th:value="*{fecha_nac}" required>
 
-                                            <input type="radio" id="esJefeDeEstudioTrue" value="true" th:field="*{esJefeDeEstudio}" name="JE">
-                                            <label for="esJefeDeEstudioTrue">Sí</label>
+                                            <br>
+                                            <p>Es jefe de estudio</p>
+                                            <input type="radio" id="esJefeDeEstudio" name="esJefeDeEstudio" value="true" th:value="*{esJefeDeEstudio}" required>
+                                            <label for="esJefeDeEstudio">Si</label><br>
+                                            <input type="radio" id="esJefeDeEstudioNo" name="esJefeDeEstudioNo" value="false" th:value="*{esJefeDeEstudio}" required>
+                                            <label for="esJefeDeEstudioNo">No</label><br>
 
-                                            <input type="radio" id="esJefeDeEstudioFalse" value="false" th:field="*{esJefeDeEstudio}" name="JE">
-                                            <label for="esJefeDeEstudioFalse">No</label>
 
                                             <div class="text-center">
                                                 <br>

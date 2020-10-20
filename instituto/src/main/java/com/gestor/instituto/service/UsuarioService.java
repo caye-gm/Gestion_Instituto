@@ -3,6 +3,7 @@ package com.gestor.instituto.service;
 import com.gestor.instituto.models.Usuario;
 import com.gestor.instituto.repository.UsuarioRepository;
 import com.gestor.instituto.service.base.BaseService;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -24,6 +25,8 @@ public class UsuarioService extends BaseService<Usuario, Long, UsuarioRepository
 
 
         //metodos
+
+
 
         public String generateRandomString(int length) {
         String asciiUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

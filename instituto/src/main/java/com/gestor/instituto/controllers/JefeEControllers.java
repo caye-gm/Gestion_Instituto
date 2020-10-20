@@ -3,6 +3,7 @@ package com.gestor.instituto.controllers;
 import com.gestor.instituto.models.Alumno;
 import com.gestor.instituto.models.Profesor;
 import com.gestor.instituto.models.Usuario;
+import com.gestor.instituto.service.AlumnoService;
 import com.gestor.instituto.service.EnvioEmail;
 import com.gestor.instituto.service.ProfesorService;
 import com.gestor.instituto.service.UsuarioService;
@@ -21,9 +22,12 @@ public class JefeEControllers {
         @Autowired
         UsuarioService uS;
         @Autowired
-        EnvioEmail eE;
+        AlumnoService aS;
         @Autowired
         ProfesorService pS;
+        @Autowired
+        EnvioEmail eE;
+
 
 
 
@@ -34,8 +38,9 @@ public class JefeEControllers {
 
 
         @GetMapping("/alumnos")
-        public String alumnos() {
-        return "/jefe_de_estudio/alumnos";
+        public String alumnos(Model m) {
+                m.addAttribute("listaAlumnos", aS.findAll());
+                return "/jefe_de_estudio/alumnos";
         }
 
         @GetMapping("/alumnoRegistro")
@@ -53,12 +58,14 @@ public class JefeEControllers {
 
 
         @GetMapping("/docentes")
-        public String docentes() {
+        public String docentes(Model m) {
+                m.addAttribute("listaDocentes", pS.findAll());
                 return "/jefe_de_estudio/docentes";
         }
+
         @GetMapping("/docenteRegistro")
         public String docenteRegistro(Model m) {
-                m.addAttribute("docenteRegistro",new Alumno());
+                m.addAttribute("docenteRegistro",new Profesor());
                 return "/jefe_de_estudio/docenteRegistro";
         }
         
