@@ -1,12 +1,7 @@
 package com.gestor.instituto.controllers;
 
-import com.gestor.instituto.models.Alumno;
-import com.gestor.instituto.models.Profesor;
-import com.gestor.instituto.models.Usuario;
-import com.gestor.instituto.service.AlumnoService;
-import com.gestor.instituto.service.EnvioEmail;
-import com.gestor.instituto.service.ProfesorService;
-import com.gestor.instituto.service.UsuarioService;
+import com.gestor.instituto.models.*;
+import com.gestor.instituto.service.*;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,7 +21,12 @@ public class JefeEControllers {
         @Autowired
         ProfesorService pS;
         @Autowired
+        CursoService cS;
+        @Autowired
+        TituloService tS;
+        @Autowired
         EnvioEmail eE;
+
 
 
 
@@ -46,6 +46,7 @@ public class JefeEControllers {
 
         @GetMapping("/alumnoRegistro")
         public String alumnoRegistro(Model m ) {
+                m.addAttribute("listaCursos", cS.findAll());
                 m.addAttribute("alumnoRegistro",new Alumno());
                 return "/jefe_de_estudio/alumnoRegistro";
         }
@@ -53,7 +54,27 @@ public class JefeEControllers {
         public String alumnoRegistroSubmit(@ModelAttribute("alumnoRegistro") Alumno usu) {
                 pS.nuevoAlumno(usu);
                 return "redirect:/jefe_de_estudio/alumnoRegistro";
+
+
         }
+        @GetMapping("/alumnoEdit{id}")
+        public String alumnoEdit(@PathVariable("id") long id,Model m) {
+                m.addAttribute("listaCursos", cS.findAll());
+                m.addAttribute("alumnoEdit",aS.findById(id));
+                return "/jefe_de_estudio/alumnoEditar";
+        }
+
+        @PostMapping("/alumnoEdit/submit")
+        public String alumnoEditsubmit(@ModelAttribute("alumnoEdit") Alumno a1) {
+
+                aS.edit(a1);
+                return "redirect:/jefe_de_estudio/alumnos";
+        }
+
+
+
+
+
 
 
 
@@ -80,7 +101,9 @@ public class JefeEControllers {
 
 
         @GetMapping("/cursos")
-        public String cursos() {
+        public String cursos(@AuthenticationPrincipal Usuario uC,Model m) {
+                m.addAttribute("usuario",uC.getEmail());
+                m.addAttribute("listaCursos", cS.findAll());
                 return "/jefe_de_estudio/cursos";
         }
 
@@ -102,10 +125,33 @@ public class JefeEControllers {
         public String extincion() {
                 return "/jefe_de_estudio/extincion";
         }
+
+
         @GetMapping("/titulos")
-        public String titulos() {
+        public String titulos(@AuthenticationPrincipal Usuario u,Model m) {
+                m.addAttribute("usuario",u.getEmail());
+                m.addAttribute("listaTitulos", tS.findAll());
+
+
                 return "/jefe_de_estudio/titulos";
         }
+
+
+        @GetMapping("/titulosEdit{id}")
+        public String tituloEdit(@PathVariable("id") long id,Model m) {
+                m.addAttribute("listaTitulos", tS.findAll());
+                m.addAttribute("tituloEdit",tS.findById(id));
+                return "/jefe_de_estudio/tituloEditar";
+        }
+
+        @PostMapping("/tituloEdit/submit")
+        public String tituloEditsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {
+                tS.edit(titulo);
+
+                return "redirect:/jefe_de_estudio/titulos";
+        }
+
+
 
 
 

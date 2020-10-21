@@ -16,6 +16,25 @@ public class Curso {
     private int numCurso;
     private String nombre;
     private String anio;
+
+    public Curso(int numCurso, String nombre, String anio, Boolean estado, Titulo titulo) {
+        this.numCurso = numCurso;
+        this.nombre = nombre;
+        this.anio = anio;
+        this.estado = estado;
+        this.titulo = titulo;
+    }
+
+    public Curso(int numCurso, String nombre, String anio, Boolean estado, List<Alumno> alumnos, List<Asignatura> asignaturas, Titulo titulo) {
+        this.numCurso = numCurso;
+        this.nombre = nombre;
+        this.anio = anio;
+        this.estado = estado;
+        this.alumnos = alumnos;
+        this.asignaturas = asignaturas;
+        this.titulo = titulo;
+    }
+
     private Boolean estado;
 
     //one to many con alumno

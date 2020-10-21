@@ -127,14 +127,20 @@
                                     <label for="fecha_nac">Fecha Nacimiento:</label>
                                     <input type="date" name="fecha_nac" class="form-control" placeholder="fecha de nacimiento" id="fecha_nac" th:value="*{fecha_nac}" required>
 
-
-
+                                        <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
+                                            <label required="required"></label>
+                                            <select id="selecAlum" name="claseAlum" class="form-control" >
+                                                <option selected value="clase" th:each="curso : ${listaCursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
+                                            </select>
+                                        </div>
 
                                     <div class="text-center">
                                         <br>
                                         <button type="submit" class="btn btn-primary">Registrar</button>
                                     </div>
-                                </form>
+                                    </form>
+
+
                                     </div>
                                 </div>
                             </div>

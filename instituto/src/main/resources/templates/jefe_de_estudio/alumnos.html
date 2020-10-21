@@ -92,6 +92,11 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
+
+
+
+
+
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">Lista de Alumnos</h1>
@@ -155,9 +160,9 @@
                                             <td th:text="${alumno.numeroTlf}">Telefono</td>
                                             <td th:text="${alumno.validacion}">Validación</td>
                                             <td th:text="${alumno.estado}">Estado</td>
-
-                                            <td>editar<i class="far fa-edit"></i></a></td>
+                                            <td><a th:href="@{/jefe_de_estudio/alumnoEdit{id}}(id=${alumno.id})}">Editar</a></td>
                                         </tr>
+
 
                                         </tbody>
                                     </table>
@@ -165,6 +170,7 @@
                             </div>
                         </div>
                     </div>
+
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">

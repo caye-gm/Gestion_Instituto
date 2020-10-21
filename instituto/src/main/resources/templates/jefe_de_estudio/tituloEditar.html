@@ -94,67 +94,60 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Curso</h1>
+                        <h1 class="mt-4">Editar Alumno</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Curso</li>
-
+                            <li class="breadcrumb-item active">Inicio</li>
+                            <li class="breadcrumb-item active">Títulos</li>
+                            <li class="breadcrumb-item active">Editar</li>
                         </ol>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Editar</h3></div>
+                                    <div class="card-body">
 
 
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                Listado de Cursos
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Año</th>
-                                                <th>Nombre</th>
-                                                <th>Estado</th>
-                                                <th>Asignaturas</th>
-                                                <th>Editar</th>
+                                        <form th:object="${tituloEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/tituloEdit/submit}">
 
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Año</th>
-                                                <th>Nombre</th>
-                                                <th>Estado</th>
-                                                <th>Asignaturas</th>
-                                                <th>Editar</th>
+                                            <label for="nombre"> Nombre:</label>
+                                            <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
 
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <tr th:each="curso : ${listaCursos}">
-
-                                            <td th:text="${curso.numCurso}">Nombre</td>
-                                            <td th:text="${curso.nombre}">Curso</td>
-                                            <td th:text="${curso.anio}">Estado</td>
-                                            <td><a href="/jefe_de_estudio/cursosAsignaturas"<button >Asignatura</button></a></td>
-                                            <td>editar<i class="far fa-edit"></i></a></td>
-                                        </tr>
+                                            <label for="apellidos">Apellidos:</label>
+                                            <input type="text" class="form-control" placeholder="Introduce los apellidos" name="apellidos" id="apellidos" th:field="*{estado}" required>
 
 
-                                        </tbody>
-                                    </table>
+                                            <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
+                                                <label required="required"></label>
+                                                <select id="selecAlum" name="claseAlum" class="form-control" >
+                                                    <option selected value="clase" th:each="curso : ${listaCursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
+                                                </select>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <br>
+                                                <button type="submit" class="btn btn-primary">Editar</button>
+                                            </div>
+                                        </form>
+
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <br><br>
+
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Salesianos triana 2020</div>
+                            <div class="text-muted">Copyright &copy; SalesianosTriana 2020</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">Política de privacidad</a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="#">Terminos y condiciones</a>
                             </div>
                         </div>
                     </div>
