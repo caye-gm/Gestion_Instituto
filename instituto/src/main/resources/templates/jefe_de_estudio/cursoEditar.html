@@ -107,9 +107,10 @@
                                     <div class="card-body">
 
 
-                                        <form th:object="${tituloEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/tituloEdit/submit}">
+                                        <form th:object="${cursoEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/cursoEdit/submit}">
 
                                             <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
+                                            <input class="form-group" id="idTitulo" th:field="*{titulo}"  hidden>
 
                                             <label for="nombre"> Nombre:</label>
                                             <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
@@ -121,13 +122,13 @@
                                                 <option name="estado"  th:value="${false}">baja</option>
                                             </select>
 
-
-                                            <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
-                                                <label required="required"></label>
+                                            <div class="form-group" id="listaTitulo" th:field="${listaTitulos}"  >
+                                                <label required="required">Titulos:</label>
                                                 <select id="selecAlum" name="claseAlum" class="form-control" >
-                                                    <option selected value="clase" th:each="curso : ${listaCursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
+                                                    <option selected value="clase" th:each="titulo : ${listaTitulos}" th:value="${titulo.id}" th:text="${titulo.nombre}"></option>
                                                 </select>
                                             </div>
+
 
                                             <div class="text-center">
                                                 <br>

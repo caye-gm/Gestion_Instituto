@@ -112,7 +112,28 @@ public class JefeEControllers {
 
                 return "/jefe_de_estudio/cursos";
         }
+        @GetMapping("/cursoEdit/{id}")
+        public String cursosEdit(@PathVariable("id") long id,Model m) {
 
+                m.addAttribute("listaTitulos", tS.findAll());
+                m.addAttribute("cursoEdit",cS.findById(id));
+
+                return "/jefe_de_estudio/cursoEditar";
+        }
+
+        @PostMapping("/cursoEdit/submit")
+        public String cursoEditsubmit(@ModelAttribute("cursoEdit") Curso curso) {
+                cS.edit(curso);
+
+                return "redirect:/jefe_de_estudio/cursos";
+        }
+
+
+
+
+
+
+        //C.ASG
         @GetMapping("/cursosAsignaturas")
         public String cursosAsig() {
                 return "/jefe_de_estudio/asignaturas";
@@ -153,6 +174,7 @@ public class JefeEControllers {
 
         @PostMapping("/tituloEdit/submit")
         public String tituloEditsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {
+
                 tS.edit(titulo);
 
                 return "redirect:/jefe_de_estudio/titulos";

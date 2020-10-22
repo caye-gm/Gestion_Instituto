@@ -17,6 +17,19 @@ public class Asignatura {
     private String nombreAsig;
     private boolean estado;
 
+    @OneToMany(mappedBy="asignatura")
+    private List<Horario> horario;
+
+    public void addAsignatura(Horario a) {
+        this.horario.add(a);
+        a.setAsignatura(this);
+    }
+
+    public void removeAsignatura(Horario a) {
+        this.horario.remove(a);
+        a.setAsignatura(null);
+    }
+
     // Mantenemos esta lista, pero no añadimos helpers
     // Si queremos rellenar la lista, realizamos un JOIN FETCH
     @EqualsAndHashCode.Exclude

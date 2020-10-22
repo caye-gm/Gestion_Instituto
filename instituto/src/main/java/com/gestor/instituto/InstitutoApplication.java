@@ -44,7 +44,7 @@ public class InstitutoApplication {
 			Asignatura asg1=new Asignatura("base de datos",true,situacionExepcional,solicitudAmpliacionMatricula);
 
 			List<Alumno> alumnoList = new ArrayList<>();
-			Curso c1 = new Curso(1,"Desarrollo de aplicaciones multiplataformas","2020",true,alumnoList,asignaturasList ,t1);
+			Curso c1 = new Curso("Desarrollo de aplicaciones multiplataformas",true,alumnoList,asignaturasList ,t1);
 			c1.addAlumno(a1);
 
 
