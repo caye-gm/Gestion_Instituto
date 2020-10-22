@@ -38,6 +38,7 @@ public class JefeEControllers {
         }
 
 
+        //ALUMNOS
         @GetMapping("/alumnos")
         public String alumnos(Model m) {
                 m.addAttribute("listaAlumnos", aS.findAll());
@@ -52,7 +53,7 @@ public class JefeEControllers {
         }
         @PostMapping("/alumnoRegistro/submit")
         public String alumnoRegistroSubmit(@ModelAttribute("alumnoRegistro") Alumno usu) {
-                pS.nuevoAlumno(usu);
+                aS.nuevoAlumno(usu);
                 return "redirect:/jefe_de_estudio/alumnoRegistro";
 
 
@@ -60,13 +61,12 @@ public class JefeEControllers {
         @GetMapping("/alumnoEdit{id}")
         public String alumnoEdit(@PathVariable("id") long id,Model m) {
                 m.addAttribute("listaCursos", cS.findAll());
-                m.addAttribute("alumnoEdit",aS.findById(id));
-                return "/jefe_de_estudio/alumnoEditar";
+                m.addAttribute("alumnoRegistro",aS.findById(id));
+                return "/jefe_de_estudio/alumnoRegistro";
         }
 
         @PostMapping("/alumnoEdit/submit")
-        public String alumnoEditsubmit(@ModelAttribute("alumnoEdit") Alumno a1) {
-
+        public String alumnoEditsubmit(@ModelAttribute("alumnoRegistro") Alumno a1) {
                 aS.edit(a1);
                 return "redirect:/jefe_de_estudio/alumnos";
         }
@@ -78,7 +78,7 @@ public class JefeEControllers {
 
 
 
-
+        //DOCENTES
         @GetMapping("/docentes")
         public String docentes(Model m) {
                 m.addAttribute("listaDocentes", pS.findAll());
@@ -96,10 +96,21 @@ public class JefeEControllers {
                 pS.nuevoProfesor(prof);
                 return "redirect:/jefe_de_estudio/docenteRegistro";
         }
+        @GetMapping("/docenteEdit{id}")
+        public String docenteEdit(@PathVariable("id") long id,Model m) {
+
+                m.addAttribute("docenteRegistro",pS.findById(id));
+                return "/jefe_de_estudio/docenteRegistro";
+        }
+
+        @PostMapping("/docenteEdit/submit")
+        public String docenteEditsubmit(@ModelAttribute("docenteRegistro") Profesor p1) {
+                pS.edit(p1);
+                return "redirect:/jefe_de_estudio/docentes";
+        }
 
 
-
-
+        //CURSO
         @GetMapping("/cursos")
         public String cursos(@AuthenticationPrincipal Usuario uC,Model m) {
                 m.addAttribute("usuario",uC.getEmail());
@@ -128,10 +139,8 @@ public class JefeEControllers {
 
 
         @GetMapping("/titulos")
-        public String titulos(@AuthenticationPrincipal Usuario u,Model m) {
-                m.addAttribute("usuario",u.getEmail());
+        public String titulos(Model m) {
                 m.addAttribute("listaTitulos", tS.findAll());
-
 
                 return "/jefe_de_estudio/titulos";
         }
@@ -141,6 +150,7 @@ public class JefeEControllers {
         public String tituloEdit(@PathVariable("id") long id,Model m) {
                 m.addAttribute("listaTitulos", tS.findAll());
                 m.addAttribute("tituloEdit",tS.findById(id));
+
                 return "/jefe_de_estudio/tituloEditar";
         }
 

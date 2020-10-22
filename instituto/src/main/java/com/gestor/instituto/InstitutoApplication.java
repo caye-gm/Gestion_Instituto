@@ -37,14 +37,15 @@ public class InstitutoApplication {
 
 			List<Curso> curso = new ArrayList<>();
 			Titulo t1=new Titulo("Desarrollo de aplicaciones multiplataformas",true,curso);
-
 			List<SituacionExepcional> situacionExepcional = new ArrayList<>();
 			List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula = new ArrayList<>();
+
+			List<Asignatura> asignaturasList = new ArrayList<>();
 			Asignatura asg1=new Asignatura("base de datos",true,situacionExepcional,solicitudAmpliacionMatricula);
 
-
-
-			Curso c1 = new Curso(1,"Desarrollo de aplicaciones multiplataformas","2020",true,t1);
+			List<Alumno> alumnoList = new ArrayList<>();
+			Curso c1 = new Curso(1,"Desarrollo de aplicaciones multiplataformas","2020",true,alumnoList,asignaturasList ,t1);
+			c1.addAlumno(a1);
 
 
 			TituloService.save(t1);

@@ -126,6 +126,7 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
                                                 <th>Correo electronico</th>
@@ -139,6 +140,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
                                                 <th>Correo electronico</th>
@@ -152,7 +154,7 @@
                                         <tbody>
 
                                         <tr th:each="alumno : ${listaAlumnos}">
-
+                                            <td th:text="${alumno.id}">ID</td>
                                             <td th:text="${alumno.nombre}">Nombre</td>
                                             <td th:text="${alumno.apellidos}">apellidos</td>
                                             <td th:text="${alumno.email}">Email</td>
@@ -160,7 +162,7 @@
                                             <td th:text="${alumno.numeroTlf}">Telefono</td>
                                             <td th:text="${alumno.validacion}">Validación</td>
                                             <td th:text="${alumno.estado}">Estado</td>
-                                            <td><a th:href="@{/jefe_de_estudio/alumnoEdit{id}}(id=${alumno.id})}">Editar</a></td>
+                                            <td><a href="#" th:href="@{/jefe_de_estudio/alumnoEdit{id}}(id=${alumno.id})}">Editar</a></td>
                                         </tr>
 
 

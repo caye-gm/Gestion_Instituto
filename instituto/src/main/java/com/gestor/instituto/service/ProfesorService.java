@@ -28,15 +28,7 @@ public class ProfesorService extends BaseService<Profesor,Long,ProfesorRepositor
     EnvioEmail eE;
 
 
-    public void nuevoAlumno(Usuario usu){
-        BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
-        String pass;
-        pass=uS.generateRandomString(8);
-            usu.setValidacion(pass);
-            usu.setPassword(encoder.encode(uS.generateRandomString(8)));
-            uS.save(usu);
-            eE.sendEmail(usu, "Clave de acceso", "Clave cambio de contraseña: " + usu.getValidacion() + " ");
-    }
+
     public void nuevoProfesor(Profesor profesor){
         BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
         String pass;

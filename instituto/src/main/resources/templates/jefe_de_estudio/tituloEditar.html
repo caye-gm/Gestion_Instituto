@@ -115,6 +115,11 @@
                                             <label for="apellidos">Apellidos:</label>
                                             <input type="text" class="form-control" placeholder="Introduce los apellidos" name="apellidos" id="apellidos" th:field="*{estado}" required>
 
+                                            <input type="radio" id="estadoAlta" name="estado" value="true" th:value="*{estado}" required>
+                                            <label for="estadoAlta">Si</label><br>
+                                            <input type="radio" id="estadoBaja" name="estado" value="false" th:value="*{estado}" required>
+                                            <label for="estadoBaja">No</label><br>
+
 
                                             <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
                                                 <label required="required"></label>

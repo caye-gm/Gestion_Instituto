@@ -106,10 +106,9 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Registrar</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4" ></h3></div>
                                     <div class="card-body">
-
-                                        <form th:object="${docenteRegistro}" method="POST" action="#" th:action="@{/jefe_de_estudio/docenteRegistro/submit}">
+                                        <form th:object="${docenteRegistro}" method="POST" action="#" th:action="@{docenteRegistro.id} == 0 ?  @{/jefe_de_estudio/docenteRegistro/submit} : @{/jefe_de_estudio/docenteEdit/submit}">
 
                                             <label for="nombre"> Nombre:</label>
                                             <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
@@ -129,6 +128,7 @@
                                             <label for="fecha_nac">Fecha Nacimiento:</label>
                                             <input type="date" name="fecha_nac" class="form-control" placeholder="fecha de nacimiento" id="fecha_nac" th:value="*{fecha_nac}" required>
 
+
                                             <br>
                                             <p>Es jefe de estudio</p>
                                             <input type="radio" id="esJefeDeEstudio" name="esJefeDeEstudio" value="true" th:value="*{esJefeDeEstudio}" required>
@@ -136,10 +136,16 @@
                                             <input type="radio" id="esJefeDeEstudioNo" name="esJefeDeEstudio" value="false" th:value="*{esJefeDeEstudio}" required>
                                             <label for="esJefeDeEstudioNo">No</label><br>
 
+                                            <label required="required">Estado:</label>
+                                            <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
+                                                <option selected name="estado" th:value="${true}">alta</option>
+                                                <option name="estado"  th:value="${false}">baja</option>
+                                            </select>
 
                                             <div class="text-center">
                                                 <br>
-                                                <button type="submit" class="btn btn-primary">Registrar</button>
+                                                <button type="submit" th:text="${docenteRegistro.id} == 0 ? 'Registrar' : 'Editar' " class="btn btn-primary">Registrar</button>
+
                                             </div>
                                         </form>
                                     </div>

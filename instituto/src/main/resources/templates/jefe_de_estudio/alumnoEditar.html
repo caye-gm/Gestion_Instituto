@@ -109,6 +109,9 @@
 
                                         <form th:object="${alumnoEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/alumnoEdit/submit}">
 
+                                            <label for="id"> ID:</label>
+                                            <input type="number" class="form-control" placeholder="Introduce el nombre" name="nombre" id="id"  th:field="*{id}" >
+
                                             <label for="nombre"> Nombre:</label>
                                             <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
 
@@ -126,6 +129,12 @@
 
                                             <label for="fecha_nac">Fecha Nacimiento:</label>
                                             <input type="date" name="fecha_nac" class="form-control" placeholder="fecha de nacimiento" id="fecha_nac" th:value="*{fecha_nac}" required>
+
+
+                                            <input type="radio" id="estadoAlta" name="estado" value="true" th:value="*{estado}" required>
+                                            <label for="estadoAlta">Alta</label><br>
+                                            <input type="radio" id="estadoBaja" name="estado" value="false" th:value="*{estado}" required>
+                                            <label for="estadoBaja">Baja</label><br>
 
                                             <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
                                                 <label required="required"></label>
