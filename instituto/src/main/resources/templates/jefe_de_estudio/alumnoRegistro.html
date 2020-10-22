@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link th:href="@{../css/styles.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -103,7 +103,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4" ></h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4" >Alumno</h3></div>
                                     <div class="card-body">
 
 
@@ -139,9 +139,9 @@
                                             </select>
 
 
-                                        <p>Curso:</p>
+
                                         <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
-                                            <label required="required"></label>
+                                            <label required="required">Curso:</label>
                                             <select id="selecAlum" name="claseAlum" class="form-control" >
                                                 <option selected value="clase" th:each="curso : ${listaCursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
                                             </select>

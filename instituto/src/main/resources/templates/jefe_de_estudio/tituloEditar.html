@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link th:href="@{../css/styles.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -109,28 +109,26 @@
 
                                         <form th:object="${tituloEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/tituloEdit/submit}">
 
+                                            <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
+                                            <input class="form-group" id="idTitulo" th:field="*{curso}"  hidden>
+
                                             <label for="nombre"> Nombre:</label>
                                             <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
 
-                                            <label for="apellidos">Apellidos:</label>
-                                            <input type="text" class="form-control" placeholder="Introduce los apellidos" name="apellidos" id="apellidos" th:field="*{estado}" required>
 
-                                            <input type="radio" id="estadoAlta" name="estado" value="true" th:value="*{estado}" required>
-                                            <label for="estadoAlta">Si</label><br>
-                                            <input type="radio" id="estadoBaja" name="estado" value="false" th:value="*{estado}" required>
-                                            <label for="estadoBaja">No</label><br>
+                                            <label required="required">Estado:</label>
+                                            <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
+                                                <option selected name="estado" th:value="${true}">alta</option>
+                                                <option name="estado"  th:value="${false}">baja</option>
+                                            </select>
 
 
-                                            <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
-                                                <label required="required"></label>
-                                                <select id="selecAlum" name="claseAlum" class="form-control" >
-                                                    <option selected value="clase" th:each="curso : ${listaCursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
-                                                </select>
-                                            </div>
+
+
 
                                             <div class="text-center">
                                                 <br>
-                                                <button type="submit" class="btn btn-primary">Editar</button>
+                                                <button type="submit" class="btn btn-primary" >Editar</button>
                                             </div>
                                         </form>
 

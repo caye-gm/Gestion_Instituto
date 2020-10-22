@@ -159,7 +159,8 @@
                                             <td th:text="${docente.esJefeDeEstudio}">Jefe de estudio</td>
                                             <td th:text="${docente.validacion}">Validación</td>
                                             <td th:text="${docente.estado}">Validación</td>
-                                            <td>editar<i class="far fa-edit"></i></a></td>
+                                            <td><a href="#"  th:href="@{docenteEdit/{id}(id=${docente.id})}">Editar</a></td>
+
                                         </tr>
 
                                         </tbody>

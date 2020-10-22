@@ -162,7 +162,8 @@
                                             <td th:text="${alumno.numeroTlf}">Telefono</td>
                                             <td th:text="${alumno.validacion}">Validación</td>
                                             <td th:text="${alumno.estado}">Estado</td>
-                                            <td><a href="#" th:href="@{/jefe_de_estudio/alumnoEdit{id}}(id=${alumno.id})}">Editar</a></td>
+                                            <td><a href="#"  th:href="@{alumnoEdit/{id}(id=${alumno.id})}">Editar</a></td>
+
                                         </tr>
 
 
