@@ -111,8 +111,9 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Año</th>
+
                                                 <th>Nombre</th>
+                                                <th>Título</th>
                                                 <th>Estado</th>
                                                 <th>Asignaturas</th>
                                                 <th>Editar</th>
@@ -121,8 +122,9 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Año</th>
+
                                                 <th>Nombre</th>
+                                                <th>Título</th>
                                                 <th>Estado</th>
                                                 <th>Asignaturas</th>
                                                 <th>Editar</th>
@@ -130,30 +132,16 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td><button><a href="/jefe_de_estudio/cursosAsignaturas" >Asignaturas</a></button></td>
-                                                <td><button>Editar</button></td>
+                                        <tr th:each="curso : ${listaCursos}">
 
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td><button><a href="/jefe_de_estudio/cursosAsignaturas" >Asignaturas</a></button></td>
-                                                <td><button>Editar</button></td>
 
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td><button>Asignaturas</button></td>
-                                                <td><button>Editar</button></td>
+                                            <td th:text="${curso.nombre}">Curso</td>
+                                            <td th:text="${curso.titulo}">titulo</td>
+                                            <td th:text="${curso.estado}">Estado</td>
 
-                                            </tr>
+                                            <td><a href="/jefe_de_estudio/cursosAsignaturas"<button >Asignatura</button></a></td>
+                                            <td><a href="#"  th:href="@{cursoEdit/{id}(id=${curso.id})}">Editar</a></td>
+                                        </tr>
 
 
                                         </tbody>

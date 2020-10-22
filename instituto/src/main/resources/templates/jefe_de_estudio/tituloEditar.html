@@ -10,9 +10,6 @@
         <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -90,53 +87,33 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        nombre
+                        Start Bootstrap
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Registro Docente</h1>
+                        <h1 class="mt-4">Editar Alumno</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Inicio</li>
-                            <li class="breadcrumb-item active">Docentes</li>
-                            <li class="breadcrumb-item active">Registro</li>
+                            <li class="breadcrumb-item active">Títulos</li>
+                            <li class="breadcrumb-item active">Editar</li>
                         </ol>
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4" >Docente</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Editar</h3></div>
                                     <div class="card-body">
-                                        <form th:object="${docenteRegistro}" method="POST" action="#" th:action="@{docenteRegistro.id} == 0 ?  @{/jefe_de_estudio/docenteRegistro/submit} : @{/jefe_de_estudio/docenteEdit/submit}">
+
+
+                                        <form th:object="${tituloEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/tituloEdit/submit}">
 
                                             <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
+                                            <input class="form-group" id="idTitulo" th:field="*{curso}"  hidden>
 
                                             <label for="nombre"> Nombre:</label>
                                             <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
-
-                                            <label for="apellidos">Apellidos:</label>
-                                            <input type="text" class="form-control" placeholder="Introduce los apellidos" name="apellidos" id="apellidos" th:field="*{apellidos}" required>
-
-                                            <label for="dni">DNI:</label>
-                                            <input type="text" class="form-control" placeholder="Introduce el dni" name="dni" id="dni"  th:field="*{dni}" required>
-
-                                            <label for="numeroTlf">Teléfono:</label>
-                                            <input type="text" class="form-control" placeholder="Introduce el telefono" name="numeroTlf" id="numeroTlf"  th:field="*{numeroTlf}" required>
-
-                                            <label for="email">Email:</label>
-                                            <input type="text" class="form-control" placeholder="Introduce el email" name="email" id="email" th:field="*{email}" required>
-
-                                            <label for="fecha_nac">Fecha Nacimiento:</label>
-                                            <input type="date" name="fecha_nac" class="form-control" placeholder="fecha de nacimiento" id="fecha_nac" th:value="*{fecha_nac}" required>
-
-
-
-                                            <label required="required">Jefe de estudio:</label>
-                                            <select id="esJefeDeEstudio" name="estado" class="form-control" th:field="*{esJefeDeEstudio}" >
-                                                <option selected name="esJefeDeEstudio" th:value="${true}">Es jefe de estudio</option>
-                                                <option name="esJefeDeEstudio"  th:value="${false}">No es jefe de estudio</option>
-                                            </select>
 
 
                                             <label required="required">Estado:</label>
@@ -147,10 +124,11 @@
 
                                             <div class="text-center">
                                                 <br>
-                                                <button type="submit" th:text="${docenteRegistro.id} == 0 ? 'Registrar' : 'Editar' " class="btn btn-primary">Registrar</button>
-
+                                                <button type="submit" class="btn btn-primary" >Editar</button>
                                             </div>
                                         </form>
+
+
                                     </div>
                                 </div>
                             </div>

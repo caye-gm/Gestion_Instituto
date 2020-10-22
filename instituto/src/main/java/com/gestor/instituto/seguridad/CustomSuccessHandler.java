@@ -15,12 +15,7 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-/**
- * Esta clase proviene del ejemplo que podemos encontrar en <a href="http://websystique.com/spring-security/spring-security-4-role-based-login-example/">aquí</a>
- *
- * @author WebSystique
- *
- */
+
 @Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 

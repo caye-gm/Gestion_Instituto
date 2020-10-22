@@ -13,9 +13,28 @@ public class Curso {
     @Id@GeneratedValue
     private Long id;
 
-    private int numCurso;
+
     private String nombre;
-    private String anio;
+
+
+    public Curso( String nombre, Boolean estado, Titulo titulo) {
+
+        this.nombre = nombre;
+
+        this.estado = estado;
+        this.titulo = titulo;
+    }
+
+    public Curso( String nombre, Boolean estado, List<Alumno> alumnos, List<Asignatura> asignaturas, Titulo titulo) {
+
+        this.nombre = nombre;
+
+        this.estado = estado;
+        this.alumnos = alumnos;
+        this.asignaturas = asignaturas;
+        this.titulo = titulo;
+    }
+
     private Boolean estado;
 
     //one to many con alumno
@@ -53,16 +72,16 @@ public class Curso {
 
 
 
-    public Curso(int numCurso, String nombre, String anio) {
-        this.numCurso = numCurso;
+    public Curso(String nombre) {
+
         this.nombre = nombre;
-        this.anio = anio;
+
     }
 
-    public Curso(int numCurso, String nombre, String anio, List<Alumno> alumnos) {
-        this.numCurso = numCurso;
+    public Curso(String nombre, List<Alumno> alumnos) {
+
         this.nombre = nombre;
-        this.anio = anio;
+
         this.alumnos = alumnos;
     }
 }

@@ -14,12 +14,24 @@ public class Titulo {
     private Long id;
 
     private String nombre;
+    private boolean estado;
+    public Titulo(String nombre, List<Curso> curso) {
+        this.nombre = nombre;
+        this.curso = curso;
+    }
 
     //asosiacion fuerte con curso
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(mappedBy="titulo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Curso> curso = new ArrayList<>();
+
+    public Titulo(String nombre, boolean estado, List<Curso> curso) {
+        this.nombre = nombre;
+        this.estado = estado;
+        this.curso = curso;
+    }
+
     //helpers
     public void addCurso(Curso c) {
         c.setTitulo(this);
