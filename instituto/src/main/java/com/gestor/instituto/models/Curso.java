@@ -53,7 +53,7 @@ public class Curso {
     //asosiacion fuerte
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy="curso", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="curso", fetch = FetchType.EAGER)
     private List<Asignatura> asignaturas = new ArrayList<>();
     //helpers
     public void addAsignatura(Asignatura a) {
@@ -76,6 +76,13 @@ public class Curso {
 
         this.nombre = nombre;
 
+    }
+
+    public Curso(String nombre, Boolean estado, List<Alumno> alumnos, List<Asignatura> asignaturas) {
+        this.nombre = nombre;
+        this.estado = estado;
+        this.alumnos = alumnos;
+        this.asignaturas = asignaturas;
     }
 
     public Curso(String nombre, List<Alumno> alumnos) {

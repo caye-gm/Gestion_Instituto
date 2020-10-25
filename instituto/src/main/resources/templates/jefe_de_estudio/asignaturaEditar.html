@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link th:href="@{../css/styles.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -96,64 +96,83 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">Curso</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Curso</li>
-
+                            <li class="breadcrumb-item active">Cursos</li>
+                            <li class="breadcrumb-item active">Asignaturas</li>
                         </ol>
 
-
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                Listado de Cursos
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-
-                                                <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
-                                                <th>Asignaturas</th>
-                                                <th>Horario</th>
-                                                <th>Editar</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-
-                                                <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
-                                                <th>Asignaturas</th>
-                                                <th>Horario</th>
-                                                <th>Editar</th>
+                    </div>
 
 
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <tr th:each="curso : ${listaCursos}">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Editar</h3></div>
+                                <div class="card-body">
 
 
-                                            <td th:text="${curso.nombre}">Curso</td>
-                                            <td th:text="${curso.titulo}">titulo</td>
-                                            <td th:text="${curso.estado}">Estado</td>
+                                    <form th:object="${asignaturaEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/cursoAsignaturaEdit/submit}">
 
-                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/{id}(id=${curso.id})}"<button >Asignatura</button></a></td>
-                                            <td>Horario</td>
-                                            <td><a href="#"  th:href="@{cursoEdit/{id}(id=${curso.id})}">Editar</a></td>
-                                        </tr>
+                                        <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
 
 
-                                        </tbody>
-                                    </table>
+
+
+                                        <label for="nombre"> Nombre:</label>
+                                        <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombreAsig}" required>
+
+                                        <label required="required">Estado:</label>
+                                        <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
+                                            <option selected name="estado" th:value="${true}">alta</option>
+                                            <option name="estado"  th:value="${false}">baja</option>
+                                        </select>
+
+                                        <div class="form-group" id="horlistaCursosario" th:field="${listaCursos}"  >
+                                            <label required="required">Curso:</label>
+                                            <select id="Curso" name="Curso" class="form-control" >
+                                                <option selected value="Curso" th:each="listaCursos : ${listaCursos}" th:value="${listaCursos.id}" th:text="${listaCursos.nombre}"></option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group" id="horario" th:field="${horario}"  >
+                                            <label required="required">horario:</label>
+                                            <select id="horarios" name="horario" class="form-control" >
+                                                <option selected value="clase" th:each="horario : ${horario}" th:value="${horario.id}" th:text="${horario.id}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" id="sExepcional" th:field="${sExepcional}"  >
+                                            <label required="required">sExepcional:</label>
+                                            <select id="Exepcional" name="sExepcional" class="form-control" >
+                                                <option selected value="clase" th:each="sExepcional : ${sExepcional}" th:value="${sExepcional.id}" th:text="${sExepcional.id}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" id="sAmpliacion" th:field="${sAmpliacion}"  >
+                                            <label required="required">sAmpliacion:</label>
+                                            <select id="Ampliacion" name="sAmpliacion" class="form-control" >
+                                                <option selected value="sAmpliacion" th:each="sAmpliacion : ${sAmpliacion}" th:value="${sAmpliacion.id}" th:text="${sAmpliacion.id}"></option>
+                                            </select>
+                                        </div>
+
+
+
+                                        <div class="text-center">
+                                            <br>
+                                            <button type="submit">Editar</button>
+                                        </div>
+                                    </form>
+
+
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+
+
+
+
+
+
+
+
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">

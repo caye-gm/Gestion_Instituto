@@ -11,6 +11,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor@AllArgsConstructor
 public class Horario implements Comparable<Horario>{
+
+
     @Id@GeneratedValue
     private Long id;
     private int dia;
@@ -20,6 +22,12 @@ public class Horario implements Comparable<Horario>{
     @ManyToOne
     private Asignatura asignatura;
 
+    public Horario(int dia, int tramo, boolean esAlta, Asignatura asignatura) {
+        this.dia = dia;
+        this.tramo = tramo;
+        this.esAlta = esAlta;
+        this.asignatura = asignatura;
+    }
 
     public Horario(int dia, int tramo, boolean esAlta) {
         this.dia = dia;

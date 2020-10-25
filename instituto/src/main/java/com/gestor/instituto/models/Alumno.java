@@ -34,6 +34,8 @@ public class Alumno extends Usuario{
         super(id, email, password, nombre, apellidos, dni, numeroTlf, fecha_nac, validacion, estado);
     }
 
+
+
     // Mantenemos esta lista, pero no añadimos helpers
     // Si queremos rellenar la lista, realizamos un JOIN FETCH
     @EqualsAndHashCode.Exclude
@@ -57,4 +59,6 @@ public class Alumno extends Usuario{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_ALUMNO"));
     }
+
+
 }

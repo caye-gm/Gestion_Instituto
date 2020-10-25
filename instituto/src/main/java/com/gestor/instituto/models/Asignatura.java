@@ -17,6 +17,11 @@ public class Asignatura {
     private String nombreAsig;
     private boolean estado;
 
+
+    //many to one a curso
+    @ManyToOne
+    private Curso curso;
+
     @OneToMany(mappedBy="asignatura")
     private List<Horario> horario;
 
@@ -43,6 +48,11 @@ public class Asignatura {
     @OneToMany(mappedBy="asignatura", fetch = FetchType.EAGER)
     private List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula = new ArrayList<>();
 
+
+
+
+
+
     public Asignatura(String nombreAsig, boolean estado, List<SituacionExepcional> situacionExepcional, List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula, Curso curso) {
         this.nombreAsig = nombreAsig;
         this.estado = estado;
@@ -58,11 +68,21 @@ public class Asignatura {
         this.solicitudAmpliacionMatricula = solicitudAmpliacionMatricula;
     }
 
-    //many to one a curso
-    @ManyToOne
-    private Curso curso;
 
+    public Asignatura(String nombreAsig, boolean estado, List<Horario> horario, List<SituacionExepcional> situacionExepcional, List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula, Curso curso) {
+        this.nombreAsig = nombreAsig;
+        this.estado = estado;
+        this.horario = horario;
+        this.situacionExepcional = situacionExepcional;
+        this.solicitudAmpliacionMatricula = solicitudAmpliacionMatricula;
+        this.curso = curso;
+    }
 
-
-
+    public Asignatura(String nombreAsig, boolean estado, List<Horario> horario, List<SituacionExepcional> situacionExepcional, List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula) {
+        this.nombreAsig = nombreAsig;
+        this.estado = estado;
+        this.horario = horario;
+        this.situacionExepcional = situacionExepcional;
+        this.solicitudAmpliacionMatricula = solicitudAmpliacionMatricula;
+    }
 }
