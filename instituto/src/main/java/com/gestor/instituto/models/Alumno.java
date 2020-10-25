@@ -13,9 +13,10 @@ import java.util.List;
 
 @Getter @Setter
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
+
 @NoArgsConstructor@AllArgsConstructor
 @Entity
+@Builder
 public class Alumno extends Usuario{
 
     public Alumno(long id, String email, String password, String nombre, String apellidos, String dni, String numeroTlf, LocalDate fecha_nac, String validacion, boolean estado, Curso curso) {

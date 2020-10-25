@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Data
 @AllArgsConstructor@NoArgsConstructor
+@Builder
 public class Curso {
     @Id@GeneratedValue
     private Long id;
@@ -38,8 +39,8 @@ public class Curso {
     private Boolean estado;
 
     //one to many con alumno
-    @OneToMany(mappedBy="curso")
-    private List<Alumno> alumnos;
+    @OneToMany(mappedBy="curso",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Alumno> alumnos = new ArrayList<>();
     //Helpers
     public void addAlumno(Alumno a) {
         this.alumnos.add(a);

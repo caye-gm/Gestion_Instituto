@@ -2,6 +2,8 @@ package com.gestor.instituto.controllers;
 
 import com.gestor.instituto.models.Alumno;
 import com.gestor.instituto.models.Horario;
+import com.gestor.instituto.service.AlumnoService;
+import com.gestor.instituto.service.CursoService;
 import com.gestor.instituto.service.HorarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,6 +21,10 @@ public class AlumnoControllers {
 
     @Autowired
     HorarioService horarioService;
+    @Autowired
+    CursoService cursoService;
+    @Autowired
+    AlumnoService alumnoService;
 
     @GetMapping("/")
     public String index() {
@@ -26,7 +32,8 @@ public class AlumnoControllers {
     }
     @GetMapping("/horario")
     public String horario(@AuthenticationPrincipal Alumno alumno, Model m) {
-        m.addAttribute("horarios",horarioService.ordernarFinal((List<Horario>) alumno.getCurso()));
+        m.addAttribute("usuario",alumno.getEmail());
+        //m.addAttribute("horarios",horarioService.ordernarFinal(alumno.getCurso()));
         return "/alumno/horario";
     }
 

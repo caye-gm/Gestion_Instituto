@@ -133,26 +133,6 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group" id="horario" th:field="${horario}"  >
-                                            <label required="required">horario:</label>
-                                            <select id="horarios" name="horario" class="form-control" >
-                                                <option selected value="clase" th:each="horario : ${horario}" th:value="${horario.id}" th:text="${horario.id}"></option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" id="sExepcional" th:field="${sExepcional}"  >
-                                            <label required="required">sExepcional:</label>
-                                            <select id="Exepcional" name="sExepcional" class="form-control" >
-                                                <option selected value="clase" th:each="sExepcional : ${sExepcional}" th:value="${sExepcional.id}" th:text="${sExepcional.id}"></option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" id="sAmpliacion" th:field="${sAmpliacion}"  >
-                                            <label required="required">sAmpliacion:</label>
-                                            <select id="Ampliacion" name="sAmpliacion" class="form-control" >
-                                                <option selected value="sAmpliacion" th:each="sAmpliacion : ${sAmpliacion}" th:value="${sAmpliacion.id}" th:text="${sAmpliacion.id}"></option>
-                                            </select>
-                                        </div>
-
-
 
                                         <div class="text-center">
                                             <br>

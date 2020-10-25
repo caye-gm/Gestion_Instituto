@@ -26,6 +26,11 @@ public class InstitutoApplication {
 
 
 
+
+					String currentDirectory = System.getProperty ("user.dir");
+					System.out.println ("user.dir:" + currentDirectory);
+			System.out.println("-----------------------------------------------------------------------------------------------");
+
 			Profesor p1=new Profesor(2,"luismi@gmail.com",passwordEncoder.encode("1234"),"Luismi","Lopez","4200000000Z","955213930",LocalDate.now(),null,true,false);
 			Profesor p2=new Profesor(1,"angel@gmail.com",passwordEncoder.encode("1234"),"Angel","Lopez","4100000000Z","955213930",LocalDate.now(),null,true,true);
 
@@ -87,8 +92,9 @@ public class InstitutoApplication {
 
 			hh.save(h1);
 			hh.save(h2);
+
 			//eE.sendEmail(a1,"prueba","esto es una prueba para developers");
-			Alumno a1=new Alumno(10000, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "684213930", LocalDate.now(),null,true);
+			Alumno a1=new Alumno(10000, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "684213930", LocalDate.now(),null,true,c2);
 			AlumS.save(a1);
 		};
 

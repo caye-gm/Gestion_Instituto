@@ -55,11 +55,6 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Docentes
                             </a>
-
-                            <a class="nav-link" href="/jefe_de_estudio/subirCSV">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Subir CSV
-                            </a>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Solicitudes
@@ -101,16 +96,24 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Inicio</h1>
+                        <h1 class="mt-4">CSV</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Inicio</li>
                         </ol>
-
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
+    <div>
+        <h1>subir csv</h1>
+
+        <h4>Upload Single File:</h4>
+        <form method="POST" th:action="@{/jefe_de_estudio/subirCSV}" enctype="multipart/form-data">
+            <input type="file" name="file"/> <br/><br/>
+            <button type="submit">Submit</button>
+        </form>
+        <hr/>
+        <div th:if="${message}">
+            <h2 th:text="${message}"/>
+        </div>
+    </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
