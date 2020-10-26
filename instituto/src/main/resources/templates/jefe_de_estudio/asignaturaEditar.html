@@ -94,59 +94,74 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Editar Alumno</h1>
+                        <h1 class="mt-4">Curso</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Inicio</li>
-                            <li class="breadcrumb-item active">Títulos</li>
-                            <li class="breadcrumb-item active">Editar</li>
+                            <li class="breadcrumb-item active">Cursos</li>
+                            <li class="breadcrumb-item active">Asignaturas</li>
                         </ol>
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Editar</h3></div>
-                                    <div class="card-body">
 
-
-                                        <form th:object="${tituloEdit}" method="POST" action="#" th:action="${tituloEdit.id} == 0 ?  @{/jefe_de_estudio/tituloCrear/submit} : @{/jefe_de_estudio/tituloEdit/submit}">
-
-                                            <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
-
-
-                                            <label for="nombre"> Nombre:</label>
-                                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" th:field="*{nombre}" required>
-
-
-                                            <label required="required">Estado:</label>
-                                            <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
-                                                <option name="estado" th:value="${true}">alta</option>
-                                                <option name="estado"  th:value="${false}">baja</option>
-                                            </select>
-
-                                            <div class="text-center">
-                                                <br>
-                                                <button type="submit" class="btn btn-primary" >Editar</button>
-                                            </div>
-                                        </form>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
 
-                    <br><br>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Editar</h3></div>
+                                <div class="card-body">
+
+
+                                    <form th:object="${asignaturaEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/cursoAsignaturaEdit/submit}">
+
+                                        <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
+
+
+
+
+                                        <label for="nombre"> Nombre:</label>
+                                        <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombreAsig}" required>
+
+                                        <label required="required">Estado:</label>
+                                        <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
+                                            <option selected name="estado" th:value="${true}">alta</option>
+                                            <option name="estado"  th:value="${false}">baja</option>
+                                        </select>
+
+                                        <div class="form-group" id="horlistaCursosario" th:field="${listaCursos}"  >
+                                            <label required="required">Curso:</label>
+                                            <select id="Curso" name="Curso" class="form-control" >
+                                                <option selected value="Curso" th:each="listaCursos : ${listaCursos}" th:value="${listaCursos.id}" th:text="${listaCursos.nombre}"></option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="text-center">
+                                            <br>
+                                            <button type="submit">Editar</button>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
 
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; SalesianosTriana 2020</div>
+                            <div class="text-muted">Copyright &copy; Salesianos triana 2020</div>
                             <div>
-                                <a href="#">Política de privacidad</a>
+                                <a href="#">Privacy Policy</a>
                                 &middot;
-                                <a href="#">Terminos y condiciones</a>
+                                <a href="#">Terms &amp; Conditions</a>
                             </div>
                         </div>
                     </div>

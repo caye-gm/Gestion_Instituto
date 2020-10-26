@@ -100,6 +100,17 @@
 
                         </ol>
 
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Crear Curso</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/jefe_de_estudio/cursoCrear">Click aquí</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="card mb-4">
                             <div class="card-header">
@@ -116,6 +127,7 @@
                                                 <th>Título</th>
                                                 <th>Estado</th>
                                                 <th>Asignaturas</th>
+                                                <th>Horario</th>
                                                 <th>Editar</th>
 
                                             </tr>
@@ -127,7 +139,9 @@
                                                 <th>Título</th>
                                                 <th>Estado</th>
                                                 <th>Asignaturas</th>
+                                                <th>Horario</th>
                                                 <th>Editar</th>
+
 
                                             </tr>
                                         </tfoot>
@@ -139,7 +153,8 @@
                                             <td th:text="${curso.titulo}">titulo</td>
                                             <td th:text="${curso.estado}">Estado</td>
 
-                                            <td><a href="/jefe_de_estudio/cursosAsignaturas"<button >Asignatura</button></a></td>
+                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/{id}(id=${curso.id})}"<button >Asignatura</button></a></td>
+                                            <td>Horario</td>
                                             <td><a href="#"  th:href="@{cursoEdit/{id}(id=${curso.id})}">Editar</a></td>
                                         </tr>
 

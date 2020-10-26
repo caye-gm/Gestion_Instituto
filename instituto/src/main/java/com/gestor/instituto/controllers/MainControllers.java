@@ -46,7 +46,9 @@ public class MainControllers {
 
         if (usuario.getValidacion().equalsIgnoreCase(validacion)){
             usuario.setPassword(encoder.encode(password));
+            usuario.setValidacion(null);
             usuarioService.edit(usuario);
+
         }
         return "redirect:/login";
     }

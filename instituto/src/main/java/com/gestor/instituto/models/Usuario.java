@@ -36,6 +36,8 @@ public abstract class Usuario implements UserDetails {
     private String validacion;
     private boolean estado;
 
+
+
     @Override
     public String getPassword() {
         return password;
