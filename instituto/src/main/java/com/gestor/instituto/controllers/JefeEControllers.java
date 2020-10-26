@@ -114,6 +114,21 @@ public class JefeEControllers {
 
                 return "/jefe_de_estudio/cursos";
         }
+
+        @GetMapping("/cursoCrear")
+        public String cursosAdd(Model m) {
+
+                m.addAttribute("listaTitulos", tituloS.findAll());
+                m.addAttribute("cursoEdit", new Curso());
+
+                return "/jefe_de_estudio/cursoEditar";
+        }
+        @PostMapping("/cursoCrear/submit")
+        public String cursosAddSubmit(@ModelAttribute("cursoEdit") Curso curso,Model m) {
+
+                cursoS.save(curso);
+                return "/jefe_de_estudio/cursoEditar";
+        }
         @GetMapping("/cursoEdit/{id}")
         public String cursosEdit(@PathVariable("id") long id,Model m) {
 
@@ -125,7 +140,7 @@ public class JefeEControllers {
 
         @PostMapping("/cursoEdit/submit")
         public String cursoEditsubmit(@ModelAttribute("cursoEdit") Curso curso) {
-                cursoS.cursoFalse(curso);
+
                 cursoS.edit(curso);
                 return "redirect:/jefe_de_estudio/cursos";
         }
@@ -189,6 +204,23 @@ public class JefeEControllers {
 
                 return "/jefe_de_estudio/titulos";
         }
+        @GetMapping("/tituloCrear")
+        public String tituloAdd(Model m) {
+
+                m.addAttribute("listaTitulos", tituloS.findAll());
+                m.addAttribute("tituloEdit", new Curso());
+
+                return "/jefe_de_estudio/tituloEditar";
+        }
+
+        @PostMapping("/tituloCrear/submit")
+        public String tituloCrearsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {
+
+
+                tituloS.save(titulo);
+
+                return "redirect:/jefe_de_estudio/titulos";
+        }
 
 
         @GetMapping("/tituloEdit/{id}")
@@ -199,6 +231,8 @@ public class JefeEControllers {
 
                 return "/jefe_de_estudio/tituloEditar";
         }
+
+
 
         @PostMapping("/tituloEdit/submit")
         public String tituloEditsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {

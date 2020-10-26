@@ -107,18 +107,18 @@
                                     <div class="card-body">
 
 
-                                        <form th:object="${tituloEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/tituloEdit/submit}">
+                                        <form th:object="${tituloEdit}" method="POST" action="#" th:action="${tituloEdit.id} == 0 ?  @{/jefe_de_estudio/tituloCrear/submit} : @{/jefe_de_estudio/tituloEdit/submit}">
 
                                             <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
-                                            <input class="form-group" id="idTitulo" th:field="*{curso}"  hidden>
+
 
                                             <label for="nombre"> Nombre:</label>
-                                            <input type="text" class="form-control" placeholder="Introduce el nombre" name="nombre" id="nombre"  th:field="*{nombre}" required>
+                                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" th:field="*{nombre}" required>
 
 
                                             <label required="required">Estado:</label>
                                             <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
-                                                <option selected name="estado" th:value="${true}">alta</option>
+                                                <option name="estado" th:value="${true}">alta</option>
                                                 <option name="estado"  th:value="${false}">baja</option>
                                             </select>
 

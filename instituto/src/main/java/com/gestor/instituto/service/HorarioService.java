@@ -48,9 +48,9 @@ public class HorarioService extends BaseService<Horario,Long, HorarioRepository>
         List<Horario> horario=new ArrayList<>();
         for (int i = 0; i < curso.getAsignaturas().size(); i++) {
             Asignatura a=curso.getAsignaturas().get(i);
-            for (int j = 0; j < curso.getAsignaturas().size(); j++) {
-                Horario h=a.getHorario().get(j);
-                horario.add(h);
+            for (int j = 0; j < a.getHorario().size(); j++) {
+
+                horario.add(a.getHorario().get(j));
             }
 
         }

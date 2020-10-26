@@ -117,7 +117,7 @@
                             <tbody th:each="horario : ${horarios}">
                                 <tr>
                                     <th:block th:each="clase : ${horario}">
-                                        <td th:text="${clase.asignatura.nombre}">  </td>
+                                        <td th:text="${clase.asignatura.nombreAsig}">  </td>
                                     </th:block>
                                 </tr>
                             </tbody>
