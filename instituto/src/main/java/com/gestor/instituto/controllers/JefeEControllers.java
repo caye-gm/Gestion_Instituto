@@ -68,6 +68,7 @@ public class JefeEControllers {
 
         @PostMapping("/alumnoEdit/submit")
         public String alumnoEditsubmit(@ModelAttribute("alumnoRegistro") Alumno a1) {
+                alumnoS.estadoFalse(a1);
                 alumnoS.edit(a1);
                 return "redirect:/jefe_de_estudio/alumnos";
         }
@@ -124,8 +125,8 @@ public class JefeEControllers {
 
         @PostMapping("/cursoEdit/submit")
         public String cursoEditsubmit(@ModelAttribute("cursoEdit") Curso curso) {
+                cursoS.cursoFalse(curso);
                 cursoS.edit(curso);
-
                 return "redirect:/jefe_de_estudio/cursos";
         }
 

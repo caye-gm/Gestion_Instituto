@@ -32,5 +32,11 @@ public class AlumnoService extends BaseService<Alumno, Long, AlumnoRepository> {
         eE.sendEmail(usu, "Clave de acceso", "Clave cambio de contraseña: " + usu.getValidacion() + " ");
     }
 
+    public void estadoFalse(Alumno alumno){
+
+       if(alumno.isAccountNonLocked()==false){
+           alumno.setCurso(null);
+       }
+    }
 
 }

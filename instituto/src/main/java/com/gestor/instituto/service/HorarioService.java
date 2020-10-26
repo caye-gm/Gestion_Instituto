@@ -1,5 +1,7 @@
 package com.gestor.instituto.service;
 
+import com.gestor.instituto.models.Asignatura;
+import com.gestor.instituto.models.Curso;
 import com.gestor.instituto.models.Horario;
 import com.gestor.instituto.models.Profesor;
 import com.gestor.instituto.repository.HorarioRepository;
@@ -42,6 +44,17 @@ public class HorarioService extends BaseService<Horario,Long, HorarioRepository>
         return listaF;
     }
 
+    public List<Horario> horario(Curso curso){
+        List<Horario> horario=new ArrayList<>();
+        for (int i = 0; i < curso.getAsignaturas().size(); i++) {
+            Asignatura a=curso.getAsignaturas().get(i);
+            for (int j = 0; j < curso.getAsignaturas().size(); j++) {
+                Horario h=a.getHorario().get(j);
+                horario.add(h);
+            }
 
+        }
+        return horario;
+    }
 
 }

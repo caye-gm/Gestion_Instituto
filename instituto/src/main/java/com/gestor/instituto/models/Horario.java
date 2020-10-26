@@ -13,8 +13,10 @@ import java.util.List;
 public class Horario implements Comparable<Horario>{
 
 
-    @Id@GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
+
     private int dia;
     private int tramo;
     private boolean esAlta;

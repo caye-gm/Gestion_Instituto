@@ -22,15 +22,21 @@ public class Asignatura {
     @ManyToOne
     private Curso curso;
 
-    @OneToMany(mappedBy="asignatura")
-    private List<Horario> horario;
+    @OneToMany(mappedBy="asignatura", fetch = FetchType.EAGER)
+    private List<Horario> horario= new ArrayList<>();
 
-    public void addAsignatura(Horario a) {
+    public Asignatura(String nombreAsig, boolean estado, Curso curso) {
+        this.nombreAsig = nombreAsig;
+        this.estado = estado;
+        this.curso = curso;
+    }
+
+    public void addHorario(Horario a) {
         this.horario.add(a);
         a.setAsignatura(this);
     }
 
-    public void removeAsignatura(Horario a) {
+    public void removeHorario(Horario a) {
         this.horario.remove(a);
         a.setAsignatura(null);
     }

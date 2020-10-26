@@ -38,5 +38,7 @@ public class ProfesorService extends BaseService<Profesor,Long,ProfesorRepositor
         uS.save(profesor);
         eE.sendEmail(profesor, "Clave de acceso", "Clave cambio de contraseña: " + profesor.getValidacion() + " ");
     }
+    public void convalidar(){
 
+    }
 }
