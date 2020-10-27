@@ -40,24 +40,19 @@ public class InstitutoApplication {
 
 			List<SituacionExepcional> situacionExepcional1dam = new ArrayList<>();
 			List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula1dam = new ArrayList<>();
-			List<Curso> curso1dam = new ArrayList<>();
-			List<Asignatura> asignaturasList1dam = new ArrayList<>();
-			List<Alumno> alumnoList1dam = new ArrayList<>();
+
 			List<Horario> horario1dam = new ArrayList<>();
 
 
-			Curso c1 = new Curso("1ºDesarrollo de aplicaciones multiplataformas",true,alumnoList1dam,asignaturasList1dam,null );
+			Curso c1 = new Curso("1ºDesarrollo de aplicaciones multiplataformas",true,null );
 
 
-			List<Curso> curso2dam = new ArrayList<>();
-			List<Asignatura> asignaturasList2dam = new ArrayList<>();
-			List<Alumno> alumnoList2dam = new ArrayList<>();
-			List<Horario> horario2dam = new ArrayList<>();
 
 
-			Titulo t2=new Titulo("Desarrollo de aplicaciones multiplataformas",true,curso1dam);
-			Curso c2 = new Curso("2ºDesarrollo de aplicaciones multiplataformas",true,alumnoList1dam,asignaturasList1dam ,t2);
 
+			Titulo t2=new Titulo("Desarrollo de aplicaciones multiplataformas",true);
+			Curso c2 = new Curso("2ºDesarrollo de aplicaciones multiplataformas",true );
+			t2.addCurso(c2);
 
 			TituloService.save(t2);
 			CursoService.save(c1);
@@ -169,14 +164,23 @@ public class InstitutoApplication {
 
 
 			//eE.sendEmail(a1,"prueba","esto es una prueba para developers");
-			Alumno a1=new Alumno(10000, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "684213930", LocalDate.now(),null,true,c2);
-			Alumno a2=new Alumno(10001, "garciamacay20@gmail.com", passwordEncoder.encode("1234"), "Juan", "lopez gomara", "4902300000Z", "652113924", LocalDate.now(),null,true,c1);
-			Alumno a3=new Alumno(10002, "mudpik747@gmail.com", passwordEncoder.encode("1234"), "Pepe", "García Martín", "4900120000Z", "684212121", LocalDate.now(),null,true,c2);
+			Alumno a1=new Alumno(10000, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "684213930", LocalDate.now(),null,true);
+			Alumno a2=new Alumno(10001, "garciamacay20@gmail.com", passwordEncoder.encode("1234"), "Juan", "lopez gomara", "4902300000Z", "652113924", LocalDate.now(),null,true);
+			Alumno a3=new Alumno(10002, "mudpik747@gmail.com", passwordEncoder.encode("1234"), "Pepe", "García Martín", "4900120000Z", "684212121", LocalDate.now(),null,true);
 
+
+
+			c1.addAlumno(a2);
+			c2.addAlumno(a1);
+			c2.addAlumno(a3);
 			AlumS.save(a1);
 			AlumS.save(a2);
 			AlumS.save(a3);
-		};
+
+
+
+
+	};
 
 
 	}

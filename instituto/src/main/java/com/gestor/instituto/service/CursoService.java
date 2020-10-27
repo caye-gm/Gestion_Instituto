@@ -22,31 +22,28 @@ public class CursoService extends BaseService<Curso,Long, CursoRepository> {
     AsignaturaService asignaturaService;
     @Autowired
     CursoService cursoService;
+
     public void cursoFalse(Curso curso){
-        if (curso.getEstado()==false){
+        if (!curso.getEstado()){
 
             curso.getTitulo().setEstado(false);
-            curso.getTitulo().removeCurso(curso);
 
-            for (int i = 0; i < curso.getAlumnos().size() ; i++) {
-                Alumno a=curso.getAlumnos().get(i);
-                a.setCurso(null);
-                curso.removeAlumno(a);
-                alumnoService.edit(a);
-                cursoService.edit(curso);
-            }
-            for (int i = 0; i < curso.getAsignaturas().size() ; i++) {
-                Long asig=curso.getAsignaturas().get(i).getId();
-                asignaturaService.findById(asig).setCurso(null);
-                curso.removeAsignatura(asignaturaService.findById(asig));
-                asignaturaService.edit(asignaturaService.findById(asig));
-                cursoService.edit(curso);
+
+            for (int i = 0; i < curso.getAlumnos().size(); i++) {
+
+                curso.getAlumnos().get(i).setEstado(false);
+
+
             }
 
+            for (int i = 0; i < curso.getAsignaturas().size(); i++) {
+                curso.getAsignaturas().get(i).setEstado(false);
 
-
-
+            }
         }
     }
+
+
+
 
 }

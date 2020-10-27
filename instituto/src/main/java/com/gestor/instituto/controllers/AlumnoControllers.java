@@ -25,7 +25,7 @@ public class AlumnoControllers {
     @Autowired
     CursoService cursoService;
     @Autowired
-    AlumnoService alumnoService;
+    AlumnoService alumnoS;
     @Autowired
     AsignaturaService asignaturaService;
 
@@ -39,6 +39,9 @@ public class AlumnoControllers {
         m.addAttribute("horarios",horarioService.ordernarFinal(horarioService.horario(alumno.getCurso())));
         return "/alumno/horario";
     }
+
+
+
 
     @GetMapping("/convalidacion")
     public String covalidacion() {

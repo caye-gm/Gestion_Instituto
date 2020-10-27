@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link th:href="@{../css/styles.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -94,17 +94,17 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Título</h1>
+                        <h1 class="mt-4">Asignaturas</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Inicio</li>
-                            <li class="breadcrumb-item active">Título</li>
-                        </ol>
+                            <li class="breadcrumb-item active">Curso</li>
+                            <li class="breadcrumb-item active">Asignaturas</li>
 
+                        </ol>
 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                Listado de títulos
+                                Listado de asignaturas
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -112,26 +112,23 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Curso</th>
-
-
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Curso</th>
-
-
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                        <tr th:each="titulos : ${listaTitulos}">
-                                            <th:block th:if="${titulos.estado} ? true : false">
-                                            <td th:text="${titulos.nombre}">Nombre</td>
-                                            <td th:text="${titulos.curso}">Curso</td>
+                                        <tr th:each="asignaturas : ${listaAsignaturas}">
+                                            <th:block th:if="${asignaturas.estado} ? true : false">
+                                                <td th:text="${asignaturas.nombreAsig}">Nombre</td>
+
                                             </th:block>
+
+
                                         </tr>
+
 
 
                                         </tbody>
@@ -144,7 +141,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Salesianos triana 2020</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

@@ -101,6 +101,7 @@
                         </ol>
 
 
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -111,49 +112,42 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Año</th>
+
                                                 <th>Nombre</th>
-                                                <th>Estado</th>
+                                                <th>Título</th>
+                                                <th>Horario</th>
                                                 <th>Asignaturas</th>
+                                                <th>Alumnos</th>
 
 
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Año</th>
+
                                                 <th>Nombre</th>
-                                                <th>Estado</th>
+                                                <th>Título</th>
+                                                <th>Horario</th>
                                                 <th>Asignaturas</th>
+                                                <th>Alumnos</th>
+
 
 
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td><button><a href="" >Asignaturas</a></button></td>
+                                        <tr th:each="curso : ${listaCursos}">
+                                            <th:block th:if="${curso.estado} ? true : false">
 
+                                            <td th:text="${curso.nombre}">Curso</td>
+                                            <td th:text="${curso.titulo}">titulo</td>
 
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td><button>Asignaturas</button></td>
+                                            <td><a th:href="@{/profesor/horario/{id}(id=${curso.id})}">Horario</a></td>
+                                            <td><a th:href="@{/profesor/cursosAsignaturas/{id}(id=${curso.id})}">Asignatura</a></td>
+                                            <td><a th:href="@{/profesor/cursosAsignaturas/alumno/{id}(id=${curso.id})}">Alumnos</a></td>
 
-
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td><button>Asignaturas</button></td>
-
-
-                                            </tr>
+                                            </th:block>
+                                        </tr>
 
 
                                         </tbody>

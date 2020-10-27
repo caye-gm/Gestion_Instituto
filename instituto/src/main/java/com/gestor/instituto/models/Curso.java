@@ -41,6 +41,12 @@ public class Curso {
     //one to many con alumno
     @OneToMany(mappedBy="curso",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Alumno> alumnos = new ArrayList<>();
+
+    public Curso(String nombre, Boolean estado) {
+        this.nombre = nombre;
+        this.estado = estado;
+    }
+
     //Helpers
     public void addAlumno(Alumno a) {
         this.alumnos.add(a);

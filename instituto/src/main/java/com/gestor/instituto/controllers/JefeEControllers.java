@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/jefe_de_estudio")
 public class JefeEControllers {
@@ -135,6 +137,8 @@ public class JefeEControllers {
 
                 m.addAttribute("listaTitulos", tituloS.findAll());
                 m.addAttribute("cursoEdit", cursoS.findById(id));
+                m.addAttribute("cursolist", cursoS.findById(id).getAlumnos());
+
 
                 return "/jefe_de_estudio/cursoEditar";
         }
@@ -142,7 +146,9 @@ public class JefeEControllers {
         @PostMapping("/cursoEdit/submit")
         public String cursoEditsubmit(@ModelAttribute("cursoEdit") Curso curso) {
 
+                cursoS.cursoFalse(curso);
                 cursoS.edit(curso);
+
                 return "redirect:/jefe_de_estudio/cursos";
         }
 
@@ -208,6 +214,12 @@ public class JefeEControllers {
 
                 return "/jefe_de_estudio/curso_listaAlumno";
         }
+
+
+
+
+
+
         //horario
 
 
@@ -281,15 +293,7 @@ public class JefeEControllers {
 
                 return "redirect:/jefe_de_estudio/titulos";
         }
-        //HORARIO
 
-        @GetMapping("/horario")
-        public String horario(@AuthenticationPrincipal Usuario u,Model m) {
-                m.addAttribute("usuario",u.getEmail());
-                //m.addAttribute("horario",hH.)
-
-                return "/jefe_de_estudio/horario";
-        }
 
 
 

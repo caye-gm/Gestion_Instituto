@@ -38,13 +38,13 @@ public class AlumnoService extends BaseService<Alumno, Long, AlumnoRepository> {
 
     public void estadoFalse(Alumno alumno){
 
-       if(alumno.isAccountNonLocked()==false){
+       if(!alumno.isAccountNonLocked()){
            alumno.setCurso(null);
        }
     }
-
-
+/*
+    @Query("Select e from alumno e where curso.asignatura =: ASIGNATURA")
     public List<Alumno> alumnoAsignatura(Asignatura asignatura) {
         return repositorio.alumnoAsignatura(asignatura);
-    }
+    }*/
 }

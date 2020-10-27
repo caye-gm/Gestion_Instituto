@@ -12,7 +12,7 @@ import java.util.List;
 public interface AlumnoRepository extends JpaRepository<Alumno,Long> {
 
 
-    @Query("select e from Alumno e where e.curso.asignaturas =: ASIGNATURA")
+    @Query("select e from Alumno e where e.curso.asignaturas = :ASIGNATURA")
     public List<Alumno> alumnoAsignatura(@Param("ASIGNATURA")Asignatura asignatura);
 
 

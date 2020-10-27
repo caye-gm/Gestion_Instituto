@@ -32,6 +32,11 @@ public class Titulo {
         this.curso = curso;
     }
 
+    public Titulo(String nombre, boolean estado) {
+        this.nombre = nombre;
+        this.estado = estado;
+    }
+
     //helpers
     public void addCurso(Curso c) {
         c.setTitulo(this);
