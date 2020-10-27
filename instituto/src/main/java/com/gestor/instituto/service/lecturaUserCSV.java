@@ -30,6 +30,7 @@ public class lecturaUserCSV {
                 System.out.println("Phone : " + phone);
                 System.out.println("Country : " + country);
                 System.out.println("---------------\n\n");
+
             }
         }
     }

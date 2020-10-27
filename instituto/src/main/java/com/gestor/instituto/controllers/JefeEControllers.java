@@ -42,6 +42,7 @@ public class JefeEControllers {
         //ALUMNOS
         @GetMapping("/alumnos")
         public String alumnos(Model m) {
+
                 m.addAttribute("listaAlumnos", alumnoS.findAll());
                 return "/jefe_de_estudio/alumnos";
         }
@@ -151,34 +152,72 @@ public class JefeEControllers {
 
 
         //C.ASG
+
+
+
         @GetMapping("/cursosAsignaturas/{id}")
         public String cursosAsig(Model m,@PathVariable("id") long id) {
                 m.addAttribute("listaAsignaturas", cursoS.findById(id).getAsignaturas());
 
                 return "/jefe_de_estudio/alumnos_asignaturas";
         }
+
+        //---
+        @GetMapping("/cursoAsignaturaCrear")
+        public String cursoAsignaturaCrear(Model m) {
+                m.addAttribute("listaCursos", cursoS.findAll());
+                m.addAttribute("asignaturaEdit", new Asignatura());
+
+                return "/jefe_de_estudio/asignaturaEditar";
+        }
+        @PostMapping("/cursoAsignaturaCrear/submit")
+        public String AsignaturaAddSubmit(@ModelAttribute("asignaturaEdit") Asignatura asignatura,Model m) {
+
+                m.addAttribute("listaCursos", cursoS.findAll());
+                asignaturaS.save(asignatura);
+
+                return "redirect:/jefe_de_estudio/cursos";
+        }
+
+
+        //---
+
+
+
         @GetMapping("/cursoAsignaturaEdit/{id}")
         public String cursoAsignaturaEdit(@PathVariable("id") long id,Model m) {
-                m.addAttribute("horario",asignaturaS.findById(id).getHorario());
-                m.addAttribute("sExepcional",asignaturaS.findById(id).getSituacionExepcional());
-                m.addAttribute("sAmpliacion",asignaturaS.findById(id).getSolicitudAmpliacionMatricula());
                 m.addAttribute("listaCursos", cursoS.findAll());
-                m.addAttribute("listaHorarios", hH.findAll());
-                m.addAttribute("listaAsignaturas", alumnoS.findAll());
                 m.addAttribute("asignaturaEdit", asignaturaS.findById(id));
 
                 return "/jefe_de_estudio/asignaturaEditar";
         }
         @PostMapping("/cursoAsignaturaEdit/submit")
         public String AsignaturaEditsubmit(@ModelAttribute("asignaturaEdit") Asignatura asignatura,Model m) {
-                m.addAttribute("horario",asignatura.getHorario());
-                m.addAttribute("sExepcional",asignatura.getSituacionExepcional());
-                m.addAttribute("sAmpliacion",asignatura.getSolicitudAmpliacionMatricula());
+
                 m.addAttribute("listaCursos", cursoS.findAll());
                 asignaturaS.edit(asignatura);
 
                 return "redirect:/jefe_de_estudio/cursos";
         }
+
+        //alumno de un curso
+
+        @GetMapping("/cursosAsignaturas/alumno/{id}")
+        public String cursosAsigAlum(Model m,@PathVariable("id") long id) {
+                m.addAttribute("listaAlumnos", cursoS.findById(id).getAlumnos());
+
+                return "/jefe_de_estudio/curso_listaAlumno";
+        }
+        //horario
+
+
+        @GetMapping("/cursosAsignaturas/horario/{id}")
+        public String cursosAsigHorario(Model m,@PathVariable("id") long id,@AuthenticationPrincipal Usuario u) {
+                m.addAttribute("horarios",hH.ordernarFinal(hH.horario(cursoS.findById(id))));
+                m.addAttribute("usuario",u.getEmail());
+                return "/jefe_de_estudio/horario";
+        }
+
 
 
         //C.ALUM

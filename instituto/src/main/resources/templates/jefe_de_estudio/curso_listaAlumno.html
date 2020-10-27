@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link th:href="@{../css/styles.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -132,43 +132,40 @@
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
-                                            <tr>
+                                        <tr>
 
-                                                <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
-                                                <th>Horario</th>
-                                                <th>Asignaturas</th>
-                                                <th>Alumnos</th>
-                                                <th>Editar</th>
+                                            <th>Nombre</th>
+                                            <th>Apellidos</th>
+                                            <th>Correo electronico</th>
+                                            <th>DNI</th>
+                                            <th>NºTeléfono</th>
+                                            <th>Curso</th>
 
-                                            </tr>
+                                        </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
+                                        <tr>
 
-                                                <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
-                                                <th>Horario</th>
-                                                <th>Asignaturas</th>
-                                                <th>Alumnos</th>
-                                                <th>Editar</th>
-
-
-                                            </tr>
+                                            <th>Nombre</th>
+                                            <th>Apellidos</th>
+                                            <th>Correo electronico</th>
+                                            <th>DNI</th>
+                                            <th>NºTeléfono</th>
+                                            <th>Curso</th>
+                                        </tr>
                                         </tfoot>
                                         <tbody>
-                                        <tr th:each="curso : ${listaCursos}">
+
+                                        <tr th:each="alumno : ${listaAlumnos}">
+
+                                            <td th:text="${alumno.nombre}">Nombre</td>
+                                            <td th:text="${alumno.apellidos}">apellidos</td>
+                                            <td th:text="${alumno.email}">Email</td>
+                                            <td th:text="${alumno.dni}">dni</td>
+                                            <td th:text="${alumno.numeroTlf}">Telefono</td>
+                                            <td th:text="${alumno.curso.nombre}">Curso</td>
 
 
-                                            <td th:text="${curso.nombre}">Curso</td>
-                                            <td th:text="${curso.titulo}">titulo</td>
-                                            <td th:text="${curso.estado}">Estado</td>
-                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/horario/{id}(id=${curso.id})}">Horario</a></td>
-                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/{id}(id=${curso.id})}">Asignatura</a></td>
-                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/alumno/{id}(id=${curso.id})}">Alumnos</a></td>
-                                            <td><a href="#"  th:href="@{cursoEdit/{id}(id=${curso.id})}">Editar</a></td>
                                         </tr>
 
 

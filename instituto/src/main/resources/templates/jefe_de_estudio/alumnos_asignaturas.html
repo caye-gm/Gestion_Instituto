@@ -94,18 +94,28 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Lista de Alumnos</h1>
+                        <h1 class="mt-4">Asignaturas</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Curso</li>
                             <li class="breadcrumb-item active">Asignaturas</li>
-                            <li class="breadcrumb-item active">Alumnos</li>
-                        </ol>
 
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Crear Asignatura</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/jefe_de_estudio/cursoAsignaturaCrear">Click aquí</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                Listado de alumnos
+                                Listado de asignaturas
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -113,7 +123,6 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Apellidos</th>
                                                 <th>Editar</th>
 
                                             </tr>
@@ -121,15 +130,16 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Apellidos</th>
                                                 <th>Editar</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                         <tr th:each="asignaturas : ${listaAsignaturas}">
-                                            <td th:text="${asignaturas.nombreAsig}">Nombre</td>
-                                            <td th:text="${asignaturas.estado}">Estado</td>
-                                            <td><a href="#" th:href="@{/jefe_de_estudio/cursoAsignaturaEdit/{id}(id=${asignaturas.id})}">Editar</a></td>
+                                            <th:block th:if="${asignaturas.estado} ? true : false">
+                                                <td th:text="${asignaturas.nombreAsig}">Nombre</td>
+                                                <td><a href="#" th:href="@{/jefe_de_estudio/cursoAsignaturaEdit/{id}(id=${asignaturas.id})}">Editar</a></td>
+                                            </th:block>
+
 
                                         </tr>
 

@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link th:href="@{../css/styles.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -55,6 +55,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Docentes
                             </a>
+
+                            <a class="nav-link" href="/jefe_de_estudio/subirCSV">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Subir CSV
+                            </a>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Solicitudes
@@ -87,102 +92,56 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <div th:text="${usuario}"></div>
+
+
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Curso</h1>
+                        <h1 class="mt-4">Inicio</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Curso</li>
-
+                            <li class="breadcrumb-item active">Inicio</li>
                         </ol>
 
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Crear Curso</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="/jefe_de_estudio/cursoCrear">Click aquí</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <div class="col-xl-3 col-md-6">
-                                    <div class="card bg-warning text-white mb-4">
-                                        <div class="card-body">Crear Asignatura</div>
-                                        <div class="card-footer d-flex align-items-center justify-content-between">
-                                            <a class="small text-white stretched-link" href="/jefe_de_estudio/cursoAsignaturaCrear">Click aquí</a>
-                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                        </div>
-
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                Listado de Cursos
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-
-                                                <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
-                                                <th>Horario</th>
-                                                <th>Asignaturas</th>
-                                                <th>Alumnos</th>
-                                                <th>Editar</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-
-                                                <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
-                                                <th>Horario</th>
-                                                <th>Asignaturas</th>
-                                                <th>Alumnos</th>
-                                                <th>Editar</th>
 
 
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <tr th:each="curso : ${listaCursos}">
+
+                        <table class="table mb-5" id="horario">
+                            <thead>
+                                <tr>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="col">Lunes</th>
+                                    <th scope="col">Martes</th>
+                                    <th scope="col">Miercoles</th>
+                                    <th scope="col">Jueves</th>
+                                    <th scope="col">Viernes</th>
+                                </tr>
+                            </thead>
+                            <tbody th:each="horario : ${horarios}">
+                                <tr>
+                                    <th:block th:each="clase : ${horario}">
+                                        <td th:text="${clase.asignatura.nombreAsig}">  </td>
+                                    </th:block>
+                                </tr>
+                            </tbody>
+                        </table>
 
 
-                                            <td th:text="${curso.nombre}">Curso</td>
-                                            <td th:text="${curso.titulo}">titulo</td>
-                                            <td th:text="${curso.estado}">Estado</td>
-                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/horario/{id}(id=${curso.id})}">Horario</a></td>
-                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/{id}(id=${curso.id})}">Asignatura</a></td>
-                                            <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/alumno/{id}(id=${curso.id})}">Alumnos</a></td>
-                                            <td><a href="#"  th:href="@{cursoEdit/{id}(id=${curso.id})}">Editar</a></td>
-                                        </tr>
 
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Salesianos triana 2020</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

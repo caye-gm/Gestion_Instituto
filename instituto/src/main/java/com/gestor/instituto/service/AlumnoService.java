@@ -1,12 +1,16 @@
 package com.gestor.instituto.service;
 
 import com.gestor.instituto.models.Alumno;
+import com.gestor.instituto.models.Asignatura;
 import com.gestor.instituto.models.Usuario;
 import com.gestor.instituto.repository.AlumnoRepository;
 import com.gestor.instituto.service.base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AlumnoService extends BaseService<Alumno, Long, AlumnoRepository> {
@@ -39,4 +43,8 @@ public class AlumnoService extends BaseService<Alumno, Long, AlumnoRepository> {
        }
     }
 
+
+    public List<Alumno> alumnoAsignatura(Asignatura asignatura) {
+        return repositorio.alumnoAsignatura(asignatura);
+    }
 }

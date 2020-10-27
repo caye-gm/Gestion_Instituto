@@ -106,11 +106,11 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Editar</h3></div>
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Asignatura</h3></div>
                                 <div class="card-body">
 
 
-                                    <form th:object="${asignaturaEdit}" method="POST" action="#" th:action="@{/jefe_de_estudio/cursoAsignaturaEdit/submit}">
+                                    <form th:object="${asignaturaEdit}" method="POST" action="#" th:action="${asignaturaEdit.id} == 0 ?  @{/jefe_de_estudio/cursoAsignaturaCrear/submit} : @{/jefe_de_estudio/cursoAsignaturaEdit/submit}">
 
                                         <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
 
@@ -126,9 +126,9 @@
                                             <option name="estado"  th:value="${false}">baja</option>
                                         </select>
 
-                                        <div class="form-group" id="horlistaCursosario" th:field="${listaCursos}"  >
+                                        <div class="form-group" id="horlistaCursosario" >
                                             <label required="required">Curso:</label>
-                                            <select id="Curso" name="Curso" class="form-control" >
+                                            <select id="Curso" name="Curso" class="form-control" th:field="*{curso}" >
                                                 <option selected value="Curso" th:each="listaCursos : ${listaCursos}" th:value="${listaCursos.id}" th:text="${listaCursos.nombre}"></option>
                                             </select>
                                         </div>
