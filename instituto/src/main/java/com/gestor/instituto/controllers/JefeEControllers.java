@@ -2,6 +2,7 @@ package com.gestor.instituto.controllers;
 
 import com.gestor.instituto.models.*;
 import com.gestor.instituto.service.*;
+import com.gestor.instituto.upload.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

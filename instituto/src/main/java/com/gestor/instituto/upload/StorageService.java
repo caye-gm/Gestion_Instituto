@@ -23,7 +23,7 @@ public interface StorageService {
 
     void init();
 
-    String store(MultipartFile file, long id);
+    String store(MultipartFile file, String name);
 
     Stream<Path> loadAll();
 

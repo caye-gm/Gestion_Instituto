@@ -99,44 +99,40 @@
                             <li class="breadcrumb-item active">Inicio</li>
                             <li class="breadcrumb-item active">Convalidación</li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Registrar Alumno</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="/jefe_de_estudio/alumnoRegistro">Click aquí</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                Listado de alumnos
-                            </div>
-                            <div class="card-body">
+
+
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-5">
+                                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Curso</h3></div>
+                                            <div class="card-body">
                                 <form enctype="multipart/form-data" method="POST" action="#" th:action="@{/alumno/convalidacion/submit}" th:object="${convalidacion}" id="formulario" >
 
-                                    <label for="idAsg" class="input-group-text">Asignatura</label>
+                                    <label for="idAsg" >Asignatura</label>
 
                                     <select id="idAsg" th:field="*{idAsignatura}" class="form-control">
                                         <option value="-1">---</option>
                                     <option th:each="asignatura : ${listaAsignaturas}" th:value="${asignatura.id}"
-                                        th:text="${asignatura.nombre}">Curso</option>
+                                        th:text="${asignatura.nombreAsig}">Curso</option>
                                     </select>
 
                                     <label for="file">Adjuntar archivo</label>
                                     <input type="file" id="file" name="file" placeholder="Adjuntar archivo">
 
-
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" class="btn btn-primary" >Enviar</button>
+                                    </div>
+                                </form>
 
                             </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
-                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

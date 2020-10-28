@@ -40,24 +40,16 @@ public class FileSystemStorageService implements StorageService{
 
     @Autowired
     public FileSystemStorageService() {
-        this.rootLocation = Paths.get("upload-dir");
+        this.rootLocation = Paths.get("/upload-dir");
     }
 
     
-    /**
-     * Método que almacena un fichero en el almacenamiento secundario
-     * desde un objeto de tipo {@link// org.springframework.web.multipart#MultipartFile} MultipartFile
-     * 
-     * Modificamos el original del ejemplo de Spring para cambiar el nombre
-     * del fichero a almacenar. Como lo asociamos al Empleado que se ha
-     * dado de alta, usaremos el ID de empleado como nombre de fichero.
-     * 
-     */
+
     @Override
-    public String store(MultipartFile file, long id) {
+    public String store(MultipartFile file, String name) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         String extension = StringUtils.getFilenameExtension(filename);
-        String storedFilename = Long.toString(id) + "." + extension;
+        String storedFilename = name + "." + extension;
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + filename);
@@ -70,14 +62,14 @@ public class FileSystemStorageService implements StorageService{
             }
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, this.rootLocation.resolve(storedFilename),
-                    StandardCopyOption.REPLACE_EXISTING);
+                        StandardCopyOption.REPLACE_EXISTING);
                 return storedFilename;
             }
         }
         catch (IOException e) {
             throw new StorageException("Failed to store file " + filename, e);
         }
-        
+
     }
 
     /**
@@ -88,8 +80,8 @@ public class FileSystemStorageService implements StorageService{
     public Stream<Path> loadAll() {
         try {
             return Files.walk(this.rootLocation, 1)
-                .filter(path -> !path.equals(this.rootLocation))
-                .map(this.rootLocation::relativize);
+                    .filter(path -> !path.equals(this.rootLocation))
+                    .map(this.rootLocation::relativize);
         }
         catch (IOException e) {
             throw new StorageException("Failed to read stored files", e);
@@ -106,7 +98,7 @@ public class FileSystemStorageService implements StorageService{
         return rootLocation.resolve(filename);
     }
 
-    
+
     /**
      * Método que es capaz de cargar un fichero a partir de su nombre
      * Devuelve un objeto de tipo Resource
@@ -130,7 +122,7 @@ public class FileSystemStorageService implements StorageService{
         }
     }
 
-    
+
     /**
      * Método que elimina todos los ficheros del almacenamiento
      * secundario del proyecto.
@@ -140,7 +132,7 @@ public class FileSystemStorageService implements StorageService{
         FileSystemUtils.deleteRecursively(rootLocation.toFile());
     }
 
-    
+
     /**
      * Método que inicializa el almacenamiento secundario del proyecto
      */

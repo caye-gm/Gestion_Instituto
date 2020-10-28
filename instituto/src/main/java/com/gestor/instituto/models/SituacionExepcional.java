@@ -1,7 +1,9 @@
 package com.gestor.instituto.models;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.File;
@@ -9,6 +11,7 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
+@Getter@Setter
 @Entity
 public class SituacionExepcional {
 
@@ -28,7 +31,7 @@ public class SituacionExepcional {
 
     private LocalDate fecha_solicitud;
     private String tipo;
-    private File Adjunto;
+    private String adjunto;
     private LocalDate fecha_resolucion;
     private String estado;
 
@@ -42,7 +45,7 @@ public class SituacionExepcional {
         this.asignatura = asignatura;
         this.fecha_solicitud = fecha_solicitud;
         this.tipo = tipo;
-        Adjunto = adjunto;
+        adjunto = adjunto;
         this.fecha_resolucion = fecha_resolucion;
         this.estado = estado;
     }
