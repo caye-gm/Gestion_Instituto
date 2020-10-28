@@ -39,7 +39,7 @@ public class Curso {
     private Boolean estado;
 
     //one to many con alumno
-    @OneToMany(mappedBy="curso",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="curso",fetch = FetchType.EAGER)
     private List<Alumno> alumnos = new ArrayList<>();
 
     public Curso(String nombre, Boolean estado) {

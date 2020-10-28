@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
+
 @NoArgsConstructor@AllArgsConstructor
 public class Titulo {
     @Id@GeneratedValue
@@ -36,6 +37,8 @@ public class Titulo {
         this.nombre = nombre;
         this.estado = estado;
     }
+
+
 
     //helpers
     public void addCurso(Curso c) {

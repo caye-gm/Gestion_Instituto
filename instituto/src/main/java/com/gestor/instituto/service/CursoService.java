@@ -10,6 +10,9 @@ import com.gestor.instituto.service.base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CursoService extends BaseService<Curso,Long, CursoRepository> {
     public CursoService(CursoRepository repo) {
@@ -23,21 +26,21 @@ public class CursoService extends BaseService<Curso,Long, CursoRepository> {
     @Autowired
     CursoService cursoService;
 
-    public void cursoFalse(Curso curso){
+    public void cursoFalse(Curso curso, List<Alumno> listaAlumnos,List<Asignatura> listaAsig){
         if (!curso.getEstado()){
 
             curso.getTitulo().setEstado(false);
 
 
-            for (int i = 0; i < curso.getAlumnos().size(); i++) {
+            for (int i = 0; i < listaAlumnos.size(); i++) {
 
-                curso.getAlumnos().get(i).setEstado(false);
-
+                listaAlumnos.get(i).setEstado(false);
+                listaAlumnos.get(i).setCurso(null);
 
             }
 
-            for (int i = 0; i < curso.getAsignaturas().size(); i++) {
-                curso.getAsignaturas().get(i).setEstado(false);
+            for (int i = 0; i < listaAsig.size(); i++) {
+                listaAsig.get(i).setEstado(false);
 
             }
         }

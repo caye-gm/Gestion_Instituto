@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -57,7 +58,10 @@ public class JefeEControllers {
         }
         @PostMapping("/alumnoRegistro/submit")
         public String alumnoRegistroSubmit(@ModelAttribute("alumnoRegistro") Alumno usu) {
-                alumnoS.nuevoAlumno(usu);
+                alumnoS.estadoFalse(usu);
+                if(usu.isAccountNonLocked()){
+                        alumnoS.nuevoAlumno(usu);
+                }
                 return "redirect:/jefe_de_estudio/alumnoRegistro";
 
 
@@ -137,7 +141,8 @@ public class JefeEControllers {
 
                 m.addAttribute("listaTitulos", tituloS.findAll());
                 m.addAttribute("cursoEdit", cursoS.findById(id));
-                m.addAttribute("cursolist", cursoS.findById(id).getAlumnos());
+
+
 
 
                 return "/jefe_de_estudio/cursoEditar";
@@ -146,7 +151,11 @@ public class JefeEControllers {
         @PostMapping("/cursoEdit/submit")
         public String cursoEditsubmit(@ModelAttribute("cursoEdit") Curso curso) {
 
-                cursoS.cursoFalse(curso);
+                cursoS.cursoFalse(curso,cursoS.findById(curso.getId()).getAlumnos(),cursoS.findById(curso.getId()).getAsignaturas());
+
+
+
+
                 cursoS.edit(curso);
 
                 return "redirect:/jefe_de_estudio/cursos";
@@ -288,7 +297,7 @@ public class JefeEControllers {
         @PostMapping("/tituloEdit/submit")
         public String tituloEditsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {
 
-
+                tituloS.tituloFalse(titulo);
                 tituloS.edit(titulo);
 
                 return "redirect:/jefe_de_estudio/titulos";
