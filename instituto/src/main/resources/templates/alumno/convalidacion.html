@@ -99,79 +99,43 @@
                             <li class="breadcrumb-item active">Inicio</li>
                             <li class="breadcrumb-item active">Convalidación</li>
                         </ol>
-
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Registrar Alumno</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/jefe_de_estudio/alumnoRegistro">Click aquí</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                Listado de solicitudes de convalidación
+                                Listado de alumnos
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Apellidos</th>
-                                                <th>DNI</th>
-                                                <th>Asignatura select</th>
-                                                <th>PDF</th>
-                                                <th>Estado( PENDIENTE a CONFIRMADA o DENEGADA )</th>
+                                <form enctype="multipart/form-data" method="POST" action="#" th:action="@{/alumno/convalidacion/submit}" th:object="${convalidacion}" id="formulario" >
+
+                                    <label for="idAsg" class="input-group-text">Asignatura</label>
+
+                                    <select id="idAsg" th:field="*{idAsignatura}" class="form-control">
+                                        <option value="-1">---</option>
+                                    <option th:each="asignatura : ${listaAsignaturas}" th:value="${asignatura.id}"
+                                        th:text="${asignatura.nombre}">Curso</option>
+                                    </select>
+
+                                    <label for="file">Adjuntar archivo</label>
+                                    <input type="file" id="file" name="file" placeholder="Adjuntar archivo">
 
 
 
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Apellidos</th>
-                                                <th>Correo electronico</th>
-                                                <th>Asignatura</th>
-                                                <th>DNI</th>
-                                                <th>NºTeléfono</th>
-
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td><td>2011/04/25</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td><td>2011/04/25</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td><td>2011/04/25</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>Senior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td><td>2011/04/25</td>
-
-                                            </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
+
+
+
                         </div>
                     </div>
                 </main>

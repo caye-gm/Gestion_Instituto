@@ -17,17 +17,30 @@ public class TituloService extends BaseService<Titulo,Long, TituloRepository> {
 
     @Autowired
     CursoService cursoService;
+    @Autowired
+    AlumnoService alumnoService;
+    @Autowired
+    AsignaturaService asignaturaService;
+    @Autowired
+    TituloService tituloService;
 
-
-    public void tituloFalse(Titulo titulo,List<Curso> listaCursos,List<Alumno> listaAlumnos,List<Asignatura> listaAsig){
+    public void tituloFalse(Titulo titulo,List<Curso> cursos,List<Asignatura> asig){
         if (!titulo.isEstado()){
 
-        for (int i = 0; i < listaCursos.size(); i++) {
-            listaCursos.get(i).setEstado(false);
+            titulo.setEstado(false);
 
-            for (int j = 0; j < listaAlumnos.size(); j++) {
+        for (int i = 0; i < cursos.size(); i++) {
+            if(cursos.get(i).getTitulo()==titulo){
+                titulo.getCurso().get(i).setEstado(false);
 
             }
+        }
+        for (int j = 0; j < asig.size(); j++) {
+                if (!asig.get(j).getCurso().getEstado()){
+                    asig.get(j).setEstado(false);
+                }
+
+
 
 
         }

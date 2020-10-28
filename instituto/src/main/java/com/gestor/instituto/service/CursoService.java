@@ -35,7 +35,7 @@ public class CursoService extends BaseService<Curso,Long, CursoRepository> {
             for (int i = 0; i < listaAlumnos.size(); i++) {
 
                 listaAlumnos.get(i).setEstado(false);
-                listaAlumnos.get(i).setCurso(null);
+
 
             }
 

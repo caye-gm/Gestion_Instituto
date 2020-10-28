@@ -42,11 +42,14 @@ public class AlumnoControllers {
 
 
 
-
+    //convalidacion
     @GetMapping("/convalidacion")
-    public String covalidacion() {
+    public String covalidacionFormulario() {
+
         return "/alumno/convalidacion";
     }
+
+
 
     @GetMapping("/extincion")
     public String extincion() {

@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 @Data
-
+@Builder
+@Getter@Setter
 @NoArgsConstructor@AllArgsConstructor
 public class Titulo {
     @Id@GeneratedValue

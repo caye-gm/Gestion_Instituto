@@ -297,7 +297,7 @@ public class JefeEControllers {
         @PostMapping("/tituloEdit/submit")
         public String tituloEditsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {
 
-                tituloS.tituloFalse(titulo);
+                //tituloS.tituloFalse(titulo);
                 tituloS.edit(titulo);
 
                 return "redirect:/jefe_de_estudio/titulos";
