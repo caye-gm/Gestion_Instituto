@@ -56,4 +56,9 @@ public class SituacionExepcional  implements Serializable {
         this.fecha_resolucion = fecha_resolucion;
         this.estado = estado;
     }
+
+    public SituacionExepcional(Alumno alumno, Asignatura asignatura) {
+        this.alumno = alumno;
+        this.asignatura = asignatura;
+    }
 }

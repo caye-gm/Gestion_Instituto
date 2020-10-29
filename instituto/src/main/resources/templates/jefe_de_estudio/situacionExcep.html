@@ -94,17 +94,17 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Solicitudes extinción</h1>
+                        <h1 class="mt-4">Solicitudes convalidación</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Inicio</li>
-                            <li class="breadcrumb-item active">Extinción</li>
+                            <li class="breadcrumb-item active">Convalidación</li>
                         </ol>
 
 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                Listado de solicitudes de extinción
+                                Listado de solicitudes de convalidación
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -113,59 +113,34 @@
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
-                                                <th>DNI</th>
-                                                <th>PDF</th>
-                                                <th>Asignatura</th>
-                                                <th>Estado( PENDIENTE a CONFIRMADA o DENEGADA )</th>
-
-
-
+                                                <th>Tipo</th>
+                                                <th>Archivo</th>
+                                                <th>Estado</th>
+                                                <th>Cambiar Estado</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
-                                                <th>Correo electronico</th>
-                                                <th>DNI</th>
-                                                <th>Asignatura</th>
-                                                <th>NºTeléfono</th>
+                                                <th>Tipo</th>
+                                                <th>Archivo</th>
+                                                <th>Estado</th>
+                                                <th>Cambiar Estado</th>
 
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td><td>2011/04/25</td>
+                                        <tr th:each="convalidacion : ${listaConvalidar}">
 
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td><td>2011/04/25</td>
+                                            <td th:text="${convalidacion.alumno.nombre}">Nombre</td>
+                                            <td th:text="${convalidacion.alumno.apellidos}">apellidos</td>
+                                            <td th:text="${convalidacion.tipo}">Tipo</td>
+                                            <td><a th:href="@{/jefe_de_estudio/situacionExcepcional/download/{name}(name=${convalidacion.adjunto})}">Archivo PDF</a></td>
+                                            <td th:text="${convalidacion.estado}">Estado</td>
+                                            <td><a th:href="@{/jefe_de_estudio/editarSituacionExcepcional/{idAlumno}/{idAsignatura}(idAlumno=${convalidacion.alumno.id}, idAsignatura=${convalidacion.asignatura.id})}">Cambiar estado</a></td>
 
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td><td>2011/04/25</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>Senior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td><td>2011/04/25</td>
-
-                                            </tr>
+                                        </tr>
 
 
                                         </tbody>

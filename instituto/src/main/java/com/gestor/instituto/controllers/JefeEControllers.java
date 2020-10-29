@@ -2,15 +2,18 @@ package com.gestor.instituto.controllers;
 
 import com.gestor.instituto.models.*;
 import com.gestor.instituto.service.*;
-import com.gestor.instituto.upload.*;
+import com.gestor.instituto.upload.FileSystemStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/jefe_de_estudio")
@@ -31,9 +34,11 @@ public class JefeEControllers {
         @Autowired
         EnvioEmail eE;
         @Autowired
-        HorarioService hH;
-
-
+        HorarioService horarioService;
+        @Autowired
+        SituacionExepcionalService situacionExepcionalService;
+        @Autowired
+        FileSystemStorageService fileSystemStorageService;
 
 
         @GetMapping("/")
@@ -235,7 +240,7 @@ public class JefeEControllers {
 
         @GetMapping("/cursosAsignaturas/horario/{id}")
         public String cursosAsigHorario(Model m,@PathVariable("id") long id,@AuthenticationPrincipal Usuario u) {
-                m.addAttribute("horarios",hH.ordernarFinal(hH.horario(cursoS.findById(id))));
+                m.addAttribute("horarios", horarioService.ordernarFinal(horarioService.horario(cursoS.findById(id))));
                 m.addAttribute("usuario",u.getEmail());
                 return "/jefe_de_estudio/horario";
         }
@@ -248,15 +253,36 @@ public class JefeEControllers {
                 return "/jefe_de_estudio/alumnos_asignaturas";
         }
 
-        @GetMapping("/convalidacion")
-        public String convalidacion() {
-                return "/jefe_de_estudio/convalidacion";
-        }
-        @GetMapping("/extincion")
-        public String extincion() {
-                return "/jefe_de_estudio/extincion";
+        //situacionExcep
+        @GetMapping("/situacionExcep")
+        public String convalidacion(Model m) {
+                m.addAttribute("listaConvalidar",situacionExepcionalService.findAll());
+
+                        return "/jefe_de_estudio/situacionExcep";
+
         }
 
+        @GetMapping("/editarSituacionExcepcional/{idAlumno}/{idAsignatura}")
+        public String editSituacionExcepcional (@PathVariable long idAlumno, @PathVariable long idAsignatura, Model model){
+                SituacionExep pk = new SituacionExep (idAlumno,idAsignatura);
+                if (situacionExepcionalService.findById(pk)!=null){
+                        model.addAttribute("excepcional", situacionExepcionalService.findById(pk));
+                        return "/jefe_de_estudio/sExcepcionalEstado";
+                }
+                return "redirect:/jefe_de_estudio/";
+        }
+        @PostMapping("/editarSituacionExcepcional/submit")
+        public String editSituacionEscepcionalSubmit (@ModelAttribute("excepcional") SituacionExepcional excepcional){
+                excepcional.setFecha_resolucion(LocalDate.now());
+                situacionExepcionalService.edit(excepcional);
+                return "redirect:/jefe_de_estudio/";
+        }
+        @GetMapping("/situacionExcepcional/download/{name}")
+        public ResponseEntity<Resource> descargarFicheros (@PathVariable("name") String name){
+                Resource resource = fileSystemStorageService.loadAsResource(name);
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +
+                        resource.getFilename() + "\"").body(resource);
+        }
         //TITULOS
 
         @GetMapping("/titulos")
