@@ -1,8 +1,10 @@
 package com.gestor.instituto.upload;
 
+
+
 public class StorageFileNotFoundException extends StorageException {
-	
-	public StorageFileNotFoundException(String message) {
+
+    public StorageFileNotFoundException(String message) {
         super(message);
     }
 

@@ -1,6 +1,5 @@
 package com.gestor.instituto.upload;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -18,33 +17,28 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
-
-/**
- * Implementación de un {@link StorageService} que almacena
- * los ficheros subidos dentro del servidor donde se ha desplegado
- * la apliacación.
- * 
- * ESTO SE REALIZA ASÍ PARA NO HACER MÁS COMPLEJO EL EJEMPLO.
- * EN UNA APLICACIÓN EN PRODUCCIÓN POSIBLEMENTE SE UTILICE
- * UN ALMACÉN REMOTO.
- * 
- * 
- * @author Equipo de desarrollo de Spring
- *
- */
 @Service
 public class FileSystemStorageService implements StorageService{
 
-	// Directorio raiz de nuestro almacén de ficheros 
-	private final Path rootLocation;
+    // Directorio raiz de nuestro almacén de ficheros
+    private final Path rootLocation;
+
 
     @Autowired
     public FileSystemStorageService() {
-        this.rootLocation = Paths.get("/upload-dir");
+        this.rootLocation = Paths.get("upload-dir");
     }
 
-    
 
+    /**
+     * Método que almacena un fichero en el almacenamiento secundario
+     * desde un objeto de tipo {@link //org.springframework.web.multipart#//MultipartFile} MultipartFile
+     *
+     * Modificamos el original del ejemplo de Spring para cambiar el nombre
+     * del fichero a almacenar. Como lo asociamos al Empleado que se ha
+     * dado de alta, usaremos el ID de empleado como nombre de fichero.
+     *
+     */
     @Override
     public String store(MultipartFile file, String name) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());

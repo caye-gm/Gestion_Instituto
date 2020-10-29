@@ -27,8 +27,11 @@ public class InstitutoApplication {
 
 
 
-					String currentDirectory = System.getProperty ("user.dir");
-					System.out.println ("user.dir:" + currentDirectory);
+					String currentDirectory = System.getProperty ("user.home/upload-dir");
+					System.out.println ("user.home/upload-dir" + currentDirectory);
+			System.out.println ("user.dir/upload-dir" + currentDirectory);
+			System.out.println ("${user.home}/upload-dir" + currentDirectory);
+			System.out.println ("${user.home/upload-dir}" + currentDirectory);
 			System.out.println("-----------------------------------------------------------------------------------------------");
 
 			Profesor p1=new Profesor(999,"luismi@gmail.com",passwordEncoder.encode("1234"),"Luismi","Lopez","4200000000Z","955213930",LocalDate.now(),null,true,false);

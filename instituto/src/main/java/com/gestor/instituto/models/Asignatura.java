@@ -22,6 +22,7 @@ public class Asignatura {
     @ManyToOne
     private Curso curso;
 
+    @ToString.Exclude
     @OneToMany(mappedBy="asignatura", fetch = FetchType.EAGER)
     private List<Horario> horario= new ArrayList<>();
 
