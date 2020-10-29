@@ -1,6 +1,12 @@
 package com.gestor.instituto.service;
 
+import com.gestor.instituto.models.Asignatura;
+import com.gestor.instituto.models.Curso;
 import com.gestor.instituto.models.Horario;
+import com.gestor.instituto.models.Profesor;
+import com.gestor.instituto.repository.HorarioRepository;
+import com.gestor.instituto.repository.ProfesorRepository;
+import com.gestor.instituto.service.base.BaseService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,8 +15,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class HorarioService {
+public class HorarioService extends BaseService<Horario,Long, HorarioRepository> {
 
+
+    public HorarioService(HorarioRepository repo) {
+        super(repo);
+    }
 
     public List<List<Horario>> ordernarFinal (List<Horario> lista){
         List<List<Horario>> listaF = new ArrayList<>();
@@ -34,6 +44,17 @@ public class HorarioService {
         return listaF;
     }
 
+    public List<Horario> horario(Curso curso){
+        List<Horario> horario=new ArrayList<>();
+        for (int i = 0; i < curso.getAsignaturas().size(); i++) {
+            Asignatura a=curso.getAsignaturas().get(i);
+            for (int j = 0; j < a.getHorario().size(); j++) {
 
+                horario.add(a.getHorario().get(j));
+            }
+
+        }
+        return horario;
+    }
 
 }

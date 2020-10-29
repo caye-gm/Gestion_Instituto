@@ -25,9 +25,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
 
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
                 </li>
@@ -55,6 +53,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Docentes
                             </a>
+
+                            <a class="nav-link" href="/jefe_de_estudio/subirCSV">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Subir CSV
+                            </a>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Solicitudes
@@ -62,8 +65,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/jefe_de_estudio/convalidacion">Convalidación</a>
-                                    <a class="nav-link" href="/jefe_de_estudio/extincion">Extinción</a>
+                                    <a class="nav-link" href="/jefe_de_estudio/situacionExcep">situacion Excepcional</a>
+
                                     <a class="nav-link" href="/jefe_de_estudio/titulos">Amp.Matrícula</a>
                                 </nav>
                             </div>
@@ -100,11 +103,9 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Inicio</li>
                         </ol>
+                        <img src="/img/triana.png" width="65%" aria-placeholder="Foto triana">
 
 
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

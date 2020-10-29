@@ -39,45 +39,25 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="/jefe_de_estudio/">
+                            <a class="nav-link" href="/profesor/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Inicio
                             </a>
+
                             <div class="sb-sidenav-menu-heading">Gestión</div>
 
 
 
-                            <a class="nav-link" href="/jefe_de_estudio/alumnos">
+                            <a class="nav-link" href="/profesor/alumnos">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Alumnos
                             </a>
-                            <a class="nav-link" href="/jefe_de_estudio/docentes">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Docentes
-                            </a>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Solicitudes
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/jefe_de_estudio/convalidacion">Convalidación</a>
-                                    <a class="nav-link" href="/jefe_de_estudio/extincion">Extinción</a>
-                                    <a class="nav-link" href="/jefe_de_estudio/titulos">Amp.Matrícula</a>
-                                </nav>
-                            </div>
 
-
-
-
-
-
-                            <a class="nav-link" href="/jefe_de_estudio/cursos">
+                            <a class="nav-link" href="/profesor/cursos">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Cursos
                             </a>
-                            <a class="nav-link" href="/jefe_de_estudio/titulos">
+                            <a class="nav-link" href="/profesor/titulos">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Títutlos
                             </a>
@@ -101,6 +81,7 @@
                         </ol>
 
 
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -111,49 +92,42 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Año</th>
+
                                                 <th>Nombre</th>
-                                                <th>Estado</th>
+                                                <th>Título</th>
+                                                <th>Horario</th>
                                                 <th>Asignaturas</th>
+                                                <th>Alumnos</th>
 
 
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Año</th>
+
                                                 <th>Nombre</th>
-                                                <th>Estado</th>
+                                                <th>Título</th>
+                                                <th>Horario</th>
                                                 <th>Asignaturas</th>
+                                                <th>Alumnos</th>
+
 
 
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td><button><a href="" >Asignaturas</a></button></td>
+                                        <tr th:each="curso : ${listaCursos}">
+                                            <th:block th:if="${curso.estado} ? true : false">
 
+                                            <td th:text="${curso.nombre}">Curso</td>
+                                            <td th:text="${curso.titulo}">titulo</td>
 
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td><button>Asignaturas</button></td>
+                                            <td><a th:href="@{/profesor/horario/{id}(id=${curso.id})}">Horario</a></td>
+                                            <td><a th:href="@{/profesor/cursosAsignaturas/{id}(id=${curso.id})}">Asignatura</a></td>
+                                            <td><a th:href="@{/profesor/cursosAsignaturas/alumno/{id}(id=${curso.id})}">Alumnos</a></td>
 
-
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td><button>Asignaturas</button></td>
-
-
-                                            </tr>
+                                            </th:block>
+                                        </tr>
 
 
                                         </tbody>

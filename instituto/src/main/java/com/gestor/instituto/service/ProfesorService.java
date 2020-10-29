@@ -6,6 +6,7 @@ import com.gestor.instituto.models.Profesor;
 import com.gestor.instituto.models.Usuario;
 import com.gestor.instituto.repository.ProfesorRepository;
 import com.gestor.instituto.service.base.BaseService;
+import com.gestor.instituto.upload.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,10 @@ public class ProfesorService extends BaseService<Profesor,Long,ProfesorRepositor
         uS.save(profesor);
         eE.sendEmail(profesor, "Clave de acceso", "Clave cambio de contraseña: " + profesor.getValidacion() + " ");
     }
+    
 
+
+    public void convalidar(){
+
+    }
 }

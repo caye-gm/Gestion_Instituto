@@ -14,6 +14,7 @@ import java.util.Collection;
 @NoArgsConstructor @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
+
 public abstract class Usuario implements UserDetails {
 
     private static final long serialVersionUID = 4932924958521868350L;
@@ -35,6 +36,8 @@ public abstract class Usuario implements UserDetails {
     private LocalDate fecha_nac;
     private String validacion;
     private boolean estado;
+
+
 
     @Override
     public String getPassword() {

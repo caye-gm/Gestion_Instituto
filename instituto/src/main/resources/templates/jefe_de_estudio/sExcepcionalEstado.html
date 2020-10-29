@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link th:href="@{../css/styles.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -94,91 +94,96 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Solicitudes extinción</h1>
+                        <h1 class="mt-4">Curso</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Inicio</li>
-                            <li class="breadcrumb-item active">Extinción</li>
+                            <li class="breadcrumb-item active">Situación excepcional</li>
                         </ol>
 
-
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                Listado de solicitudes de extinción
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Apellidos</th>
-                                                <th>DNI</th>
-                                                <th>PDF</th>
-                                                <th>Asignatura</th>
-                                                <th>Estado( PENDIENTE a CONFIRMADA o DENEGADA )</th>
+                    </div>
 
 
-
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Apellidos</th>
-                                                <th>Correo electronico</th>
-                                                <th>DNI</th>
-                                                <th>Asignatura</th>
-                                                <th>NºTeléfono</th>
-
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td><td>2011/04/25</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td><td>2011/04/25</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td><td>2011/04/25</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>Senior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td><td>2011/04/25</td>
-
-                                            </tr>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Situación excepcional</h3></div>
+                                <div class="card-body">
 
 
-                                        </tbody>
-                                    </table>
+                                    <form method="POST" action="#" th:action="@{/jefe_de_estudio/editarSituacionExcepcional/submit}"
+                                          th:object="${excepcional}" id="formulario" >
+
+
+                                            <input type="hidden" th:field="*{id.alumno_id}" id="idAlumno" name="idAlumno">
+                                            <input type="hidden" th:field="*{id.asignatura_id}" id="idAsignatura" name="idAsignatura">
+
+
+
+                                                    <label for="nombreAlumno">Alumno</label>
+
+                                                <input type="text" readonly id="nombreAlumno" name="nombreAlumno" class="form-control" placeholder="Nombre alumno" th:field="*{alumno.nombre}" >
+
+                                                <label for="nombreAlumno">Apellidos</label>
+                                                <input type="text" readonly id="apellidoAlumno" name="apellidoAlumno" class="form-control" placeholder="Nombre alumno" th:field="*{alumno.apellidos}" >
+
+
+
+
+                                                <label for="nombreAsignatura" >Asignatura</label>
+                                                <input type="text" readonly id="nombreAsignatura" name="nombreAsignatura" class="form-control" placeholder="Nombre asignatura" th:field="*{asignatura.nombreAsig}" >
+
+
+
+                                                <label for="fecha_solicitud" >Fecha solicitud</label>
+                                                <input type="text" readonly id="fecha_solicitud" name="fecha_solicitud" class="form-control"
+                                                       placeholder="Fecha solicitud" th:field="*{fecha_solicitud}" >
+
+
+
+                                                    <label for="tipo" >Tipo de Solicitud</label>
+                                                <input type="text" id="tipo" name="tipo" class="form-control"
+                                                       placeholder="Tipo de solicitud" th:field="*{tipo}" readonly>
+
+
+
+
+                                                <p>Estado: </p>
+
+                                                    <input type="radio" id="pendiente" name="estado"  th:value="${'Pendiente'}" th:field="*{estado}">
+                                                    <label for="pendiente">Pendiente</label>
+
+
+                                                    <input type="radio" id="confirmada" name="estado"  th:value="${'Confirmada'}" th:field="*{estado}">
+                                                    <label  for="confirmada">Confirmada</label>
+
+
+                                                    <input type="radio" id="denegada" name="estado"  th:value="${'Denegada'}" th:field="*{estado}">
+                                                    <label  for="denegada">Denegada</label>
+
+                                                    <br>
+
+                                                    <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
+
+                                                    </form>
+
+
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+
+
+
+
+
+
+
+
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                            <div class="text-muted">Copyright &copy; Salesianos triana 2020</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

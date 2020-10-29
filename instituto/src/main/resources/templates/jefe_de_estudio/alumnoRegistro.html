@@ -134,18 +134,20 @@
 
                                             <label required="required">Estado:</label>
                                             <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
-                                                <option selected name="estado" th:value="${true}">alta</option>
+                                                <option name="estado" th:value="${true}">alta</option>
                                                 <option name="estado"  th:value="${false}">baja</option>
                                             </select>
 
 
 
-                                        <div class="form-group" id="listaCursos" th:field="${listaCursos}"  >
-                                            <label required="required">Curso:</label>
-                                            <select id="selecAlum" name="claseAlum" class="form-control" >
-                                                <option selected value="clase" th:each="curso : ${listaCursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
+
+
+                                                <label for="curso" required>Curso</label>
+                                            <select th:field="*{curso}" id="curso" class="form-control">
+                                                <option value="-1" >---</option>
+                                                <option th:each="curso : ${listaCursos}" th:value="${curso.id}" th:text="${curso.nombre}">Curso</option>
                                             </select>
-                                        </div>
+
 
                                     <div class="text-center">
                                         <br>

@@ -8,6 +8,8 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
+@Getter@Setter
 @NoArgsConstructor@AllArgsConstructor
 public class Titulo {
     @Id@GeneratedValue
@@ -23,7 +25,7 @@ public class Titulo {
     //asosiacion fuerte con curso
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy="titulo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="titulo", fetch = FetchType.EAGER)
     private List<Curso> curso = new ArrayList<>();
 
     public Titulo(String nombre, boolean estado, List<Curso> curso) {
@@ -31,6 +33,13 @@ public class Titulo {
         this.estado = estado;
         this.curso = curso;
     }
+
+    public Titulo(String nombre, boolean estado) {
+        this.nombre = nombre;
+        this.estado = estado;
+    }
+
+
 
     //helpers
     public void addCurso(Curso c) {
