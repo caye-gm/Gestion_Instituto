@@ -117,7 +117,7 @@
 
 
                                             <label required="required">Estado:</label>
-                                            <select id="clase" name="estado" class="form-control" th:field="*{estado}" >
+                                            <select id="clase" name="estado" class="form-control" th:field="*{estado}"  required>
                                                 <option name="estado" th:value="${true}">alta</option>
                                                 <option name="estado"  th:value="${false}">baja</option>
                                             </select>

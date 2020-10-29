@@ -135,8 +135,8 @@
                                             <tr>
 
                                                 <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
+
+
                                                 <th>Horario</th>
                                                 <th>Asignaturas</th>
                                                 <th>Alumnos</th>
@@ -148,8 +148,8 @@
                                             <tr>
 
                                                 <th>Nombre</th>
-                                                <th>Título</th>
-                                                <th>Estado</th>
+
+
                                                 <th>Horario</th>
                                                 <th>Asignaturas</th>
                                                 <th>Alumnos</th>
@@ -161,14 +161,14 @@
                                         <tbody>
                                         <tr th:each="curso : ${listaCursos}">
 
-
+                                            <th:block th:if="${curso.estado} ? true : false">
                                             <td th:text="${curso.nombre}">Curso</td>
-                                            <td th:text="${curso.titulo}">titulo</td>
-                                            <td th:text="${curso.estado}">Estado</td>
+
                                             <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/horario/{id}(id=${curso.id})}">Horario</a></td>
                                             <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/{id}(id=${curso.id})}">Asignatura</a></td>
                                             <td><a th:href="@{/jefe_de_estudio/cursosAsignaturas/alumno/{id}(id=${curso.id})}">Alumnos</a></td>
                                             <td><a href="#"  th:href="@{cursoEdit/{id}(id=${curso.id})}">Editar</a></td>
+                                            </th:block>
                                         </tr>
 
 

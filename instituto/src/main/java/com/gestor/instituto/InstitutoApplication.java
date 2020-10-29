@@ -35,16 +35,17 @@ public class InstitutoApplication {
 			System.out.println("-----------------------------------------------------------------------------------------------");
 
 			Profesor p1=new Profesor(999,"luismi@gmail.com",passwordEncoder.encode("1234"),"Luismi","Lopez","4200000000Z","955213930",LocalDate.now(),null,true,false);
-			Profesor p2=new Profesor(1000,"angel@gmail.com",passwordEncoder.encode("1234"),"Angel","Lopez","4100000000Z","955213930",LocalDate.now(),null,true,true);
+			Profesor p2=new Profesor(1000,"angel@gmail.com",passwordEncoder.encode("1234"),"Angel","Lopez","4109517500C","955213930",LocalDate.now(),null,true,true);
+			Profesor p3=new Profesor(1001,"profesor",passwordEncoder.encode("profesor"),"Profesor","Teacher","3720000000Z","684232398",LocalDate.now(),null,true,false);
+			Profesor p4=new Profesor(1002,"admin",passwordEncoder.encode("admin"),"admin","admin","8256008600D","6255856734",LocalDate.now(),null,true,true);
+			Profesor p5=new Profesor(1003,"Pablo",passwordEncoder.encode("1234"),"Pablo","Escalante","1256368600A","6255856734",LocalDate.now(),null,true,false);
+
 
 			ProfS.save(p1);
 			ProfS.save(p2);
+			ProfS.save(p3);
+			ProfS.save(p4);
 
-
-			List<SituacionExepcional> situacionExepcional1dam = new ArrayList<>();
-			List<SolicitudAmpliacionMatricula> solicitudAmpliacionMatricula1dam = new ArrayList<>();
-
-			List<Horario> horario1dam = new ArrayList<>();
 
 
 			Curso c1 = new Curso("1ºDesarrollo de aplicaciones multiplataformas",true,null );
@@ -65,51 +66,60 @@ public class InstitutoApplication {
 
 
 			//1dam
-			Asignatura asg1=new Asignatura("Base de datos",true,c1);
-			Asignatura asg2=new Asignatura("Programación",true,c1);
-			Asignatura asg3=new Asignatura("Lenguaje de marcas",true,c1);
-			Asignatura asg4=new Asignatura("Sistemas",true,c1);
+			Asignatura BBDD=new Asignatura("Base de datos",true,c1);
+			Asignatura PRO=new Asignatura("Programación",true,c1);
+			Asignatura LM=new Asignatura("Lenguaje de marcas",true,c1);
+			Asignatura SI=new Asignatura("Sistemas",true,c1);
 			//2dam
-			Asignatura asg5=new Asignatura("Acceso a datos",true,c2);
-			Asignatura asg6=new Asignatura("Sistema de gestión empresarial",true,c2);
-			Asignatura asg7=new Asignatura("Desarrollo de interfaces",true,c2);
-			Asignatura asg8=new Asignatura("FOP",true,c2);
+			Asignatura AD=new Asignatura("Acceso a datos",true,c2);
+			Asignatura SGE=new Asignatura("Sistema de gestión empresarial",true,c2);
+			Asignatura DI=new Asignatura("Desarrollo de interfaces",true,c2);
+			Asignatura FOP=new Asignatura("FOP",true,c2);
 
 
 
-			AsignaturaService.save(asg1);
-			AsignaturaService.save(asg2);
-			AsignaturaService.save(asg3);
-			AsignaturaService.save(asg4);
-			AsignaturaService.save(asg5);
-			AsignaturaService.save(asg6);
-			AsignaturaService.save(asg7);
-			AsignaturaService.save(asg8);
+			AsignaturaService.save(BBDD);
+			AsignaturaService.save(PRO);
+			AsignaturaService.save(LM);
+			AsignaturaService.save(SI);
+			AsignaturaService.save(AD);
+			AsignaturaService.save(SGE);
+			AsignaturaService.save(DI);
+			AsignaturaService.save(FOP);
 
-			Horario h1=new Horario(1,1,true,asg5);
-			Horario h2=new Horario(1,2,true,asg5);
-			Horario h3=new Horario(1,3,true,asg6);
-			Horario h4=new Horario(1,4,true,asg7);
-			Horario h5=new Horario(1,5,true,asg7);
-			Horario h6=new Horario(1,6,true,asg7);
-			Horario h7=new Horario(2,1,true,asg8);
-			Horario h8=new Horario(2,2,true,asg6);
-			Horario h9=new Horario(2,3,true,asg6);
-			Horario h10=new Horario(2,4,true,asg5);
-			Horario h11=new Horario(2,5,true,asg5);
-			Horario h12=new Horario(2,6,true,asg6);
-			Horario h13=new Horario(3,1,true,asg5);
-			Horario h14=new Horario(3,2,true,asg5);
-			Horario h15=new Horario(3,3,true,asg5);
-			Horario h16=new Horario(3,4,true,asg5);
-			Horario h17=new Horario(3,5,true,asg5);
-			Horario h18=new Horario(3,6,true,asg5);
-			Horario h19=new Horario(4,1,true,asg5);
-			Horario h20=new Horario(4,2,true,asg5);
-			Horario h21=new Horario(4,3,true,asg5);
-			Horario h22=new Horario(4,4,true,asg5);
-			Horario h23=new Horario(4,5,true,asg5);
-			Horario h24=new Horario(4,6,true,asg5);
+			Horario h1=new Horario(1,1,true,AD);
+			Horario h2=new Horario(1,2,true,AD);
+			Horario h3=new Horario(1,3,true,SGE);
+			Horario h4=new Horario(1,4,true,DI);
+			Horario h5=new Horario(1,5,true,DI);
+			Horario h6=new Horario(1,6,true,DI);
+			Horario h7=new Horario(2,1,true,FOP);
+			Horario h8=new Horario(2,2,true,SGE);
+			Horario h9=new Horario(2,3,true,SGE);
+			Horario h10=new Horario(2,4,true,AD);
+			Horario h11=new Horario(2,5,true,AD);
+			Horario h12=new Horario(2,6,true,SGE);
+			Horario h13=new Horario(3,1,true,AD);
+			Horario h14=new Horario(3,2,true,AD);
+			Horario h15=new Horario(3,3,true,AD);
+			Horario h16=new Horario(3,4,true,AD);
+			Horario h17=new Horario(3,5,true,AD);
+			Horario h18=new Horario(3,6,true,AD);
+			Horario h19=new Horario(4,1,true,AD);
+			Horario h20=new Horario(4,2,true,AD);
+			Horario h21=new Horario(4,3,true,AD);
+			Horario h22=new Horario(4,4,true,AD);
+			Horario h23=new Horario(4,5,true,AD);
+			Horario h24=new Horario(4,6,true,AD);
+			Horario h25=new Horario(5,1,true,AD);
+			Horario h26=new Horario(5,2,true,AD);
+			Horario h27=new Horario(5,3,true,AD);
+			Horario h28=new Horario(5,4,true,AD);
+			Horario h29=new Horario(5,5,true,AD);
+			Horario h30=new Horario(5,6,true,AD);
+
+
+
 
 			hh.save(h1);
 			hh.save(h2);
@@ -135,50 +145,98 @@ public class InstitutoApplication {
 			hh.save(h22);
 			hh.save(h23);
 			hh.save(h24);
+			hh.save(h25);
+			hh.save(h26);
+			hh.save(h27);
+			hh.save(h28);
+			hh.save(h29);
+			hh.save(h30);
 
 
 
-			asg5.addHorario(h1);
-			asg5.addHorario(h2);
-			asg6.addHorario(h3);
-			asg7.addHorario(h4);
-			asg7.addHorario(h5);
-			asg7.addHorario(h6);
-			asg8.addHorario(h7);
-			asg6.addHorario(h8);
-			asg6.addHorario(h9);
-			asg5.addHorario(h10);
-			asg5.addHorario(h11);
-			asg5.addHorario(h12);
-			asg5.addHorario(h13);
-			asg5.addHorario(h14);
-			asg5.addHorario(h15);
-			asg5.addHorario(h16);
-			asg5.addHorario(h17);
-			asg5.addHorario(h18);
-			asg5.addHorario(h19);
-			asg5.addHorario(h20);
-			asg5.addHorario(h21);
-			asg5.addHorario(h22);
-			asg5.addHorario(h23);
-			asg5.addHorario(h24);
+
+			AD.addHorario(h1);
+			AD.addHorario(h2);
+			SGE.addHorario(h3);
+			DI.addHorario(h4);
+			DI.addHorario(h5);
+			DI.addHorario(h6);
+			FOP.addHorario(h7);
+			SGE.addHorario(h8);
+			SGE.addHorario(h9);
+			AD.addHorario(h10);
+			AD.addHorario(h11);
+			AD.addHorario(h12);
+			AD.addHorario(h13);
+			AD.addHorario(h14);
+			AD.addHorario(h15);
+			AD.addHorario(h16);
+			AD.addHorario(h17);
+			AD.addHorario(h18);
+			AD.addHorario(h19);
+			AD.addHorario(h20);
+			AD.addHorario(h21);
+			AD.addHorario(h22);
+			AD.addHorario(h23);
+			AD.addHorario(h24);
+			AD.addHorario(h25);
+			AD.addHorario(h26);
+			AD.addHorario(h27);
+			AD.addHorario(h28);
+			AD.addHorario(h29);
+			AD.addHorario(h30);
 
 
 
 
 			//eE.sendEmail(a1,"prueba","esto es una prueba para developers");
-			Alumno a1=new Alumno(10000, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4900000000Z", "684213930", LocalDate.now(),null,true);
-			Alumno a2=new Alumno(10001, "garciamacay20@gmail.com", passwordEncoder.encode("1234"), "Juan", "lopez gomara", "4902300000Z", "652113924", LocalDate.now(),null,true);
-			Alumno a3=new Alumno(10002, "mudpik747@gmail.com", passwordEncoder.encode("1234"), "Pepe", "García Martín", "4900120000Z", "684212121", LocalDate.now(),null,true);
-
-
+			Alumno a1=new Alumno(10000, "cayetanog2000@gmail.com", passwordEncoder.encode("1234"), "Cayetano", "García Martín", "4902340530Z", "684213930", LocalDate.now(),null,true);
+			Alumno a2=new Alumno(10001, "garciamacay20@gmail.com", passwordEncoder.encode("1234"), "Juan", "lopez gomara", "4902300421Z", "652113924", LocalDate.now(),null,true);
+			Alumno a3=new Alumno(10002, "mudpik747@gmail.com", passwordEncoder.encode("1234"), "Pepe", "García Martín", "4900122300Z", "684212121", LocalDate.now(),null,true);
+			Alumno a4=new Alumno(10002, "usuario", passwordEncoder.encode("usuario"), "usuario", "usuario usuario", "4975699523Z", "623416521", LocalDate.now(),null,true);
+			Alumno a5=new Alumno(10003, "juan@gmail.com", passwordEncoder.encode("1234"), "juan", "García Martín", "4905400000Z", "684213930", LocalDate.now(),null,true);
+			Alumno a6=new Alumno(10004, "arbeloa@gmail.com", passwordEncoder.encode("1234"), "arbeloa", "Perez roman", "494981590Z", "652113924", LocalDate.now(),null,true);
+			Alumno a7=new Alumno(10005, "joni@gmail.com", passwordEncoder.encode("1234"), "joni", "García Lopez", "234897219Z", "684213930", LocalDate.now(),null,true);
+			Alumno a8=new Alumno(10006, "manuel@gmail.com", passwordEncoder.encode("1234"), "manuel", "lopez gomara", "318456917Z", "652113924", LocalDate.now(),null,true);
+			Alumno a9=new Alumno(10007, "manuel_pokemon@gmail.com", passwordEncoder.encode("1234"), "manuel", "Padilla Gil", "974512638A", "684213930", LocalDate.now(),null,true);
+			Alumno a10=new Alumno(10008, "adrian@gmail.com", passwordEncoder.encode("1234"), "Adrian", "Diaz Gomez", "4902300230X", "652113924", LocalDate.now(),null,true);
+			Alumno a11=new Alumno(10009, "luismiguel@gmail.com", passwordEncoder.encode("1234"), "Luismi", "Costa Martín", "493120530C", "684213930", LocalDate.now(),null,true);
+			Alumno a12=new Alumno(10011, "maria@gmail.com", passwordEncoder.encode("1234"), "Maria", "Macias gomara", "490230340D", "652113924", LocalDate.now(),null,true);
+			Alumno a13=new Alumno(10012, "daniel@gmail.com", passwordEncoder.encode("1234"), "Daniel", "Lorenzo Gonzalez", "2345342000F", "684213930", LocalDate.now(),null,true);
+			Alumno a14=new Alumno(10013, "carlos@gmail.com", passwordEncoder.encode("1234"), "Carlos", "Montero Lopez", "4908526500H", "652113924", LocalDate.now(),null,true);
 
 			c1.addAlumno(a2);
 			c2.addAlumno(a1);
 			c2.addAlumno(a3);
+			c2.addAlumno(a4);
+			c2.addAlumno(a5);
+			c2.addAlumno(a6);
+			c2.addAlumno(a7);
+			c2.addAlumno(a8);
+			c1.addAlumno(a9);
+			c1.addAlumno(a10);
+			c1.addAlumno(a11);
+			c1.addAlumno(a12);
+			c2.addAlumno(a13);
+			c2.addAlumno(a14);
+
+
+
 			AlumS.save(a1);
 			AlumS.save(a2);
 			AlumS.save(a3);
+			AlumS.save(a4);
+			AlumS.save(a5);
+			AlumS.save(a6);
+			AlumS.save(a7);
+			AlumS.save(a8);
+			AlumS.save(a9);
+			AlumS.save(a10);
+			AlumS.save(a11);
+			AlumS.save(a12);
+			AlumS.save(a13);
+			AlumS.save(a14);
+
 
 
 

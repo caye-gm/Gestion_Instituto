@@ -124,7 +124,7 @@
                                             <div class="form-group" id="listaTitulo" >
                                                 <label required="required">Titulos:</label>
                                                 <select id="titulo" th:field="*{titulo}" class="form-control">
-                                                    <option value="-1">---</option>
+
                                                     <option th:each="titulo : ${listaTitulos}" th:value="${titulo.id}" th:text="${titulo.nombre}">Título</option>
                                                 </select>
                                             </div>

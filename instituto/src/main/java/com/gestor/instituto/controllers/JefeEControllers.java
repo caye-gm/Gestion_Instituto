@@ -156,12 +156,7 @@ public class JefeEControllers {
 
         @PostMapping("/cursoEdit/submit")
         public String cursoEditsubmit(@ModelAttribute("cursoEdit") Curso curso) {
-
-                cursoS.cursoFalse(curso,cursoS.findById(curso.getId()).getAlumnos(),cursoS.findById(curso.getId()).getAsignaturas());
-
-
-
-
+        cursoS.cursoFalse(curso,cursoS.findById(curso.getId()).getAlumnos(),cursoS.findById(curso.getId()).getAsignaturas());
                 cursoS.edit(curso);
 
                 return "redirect:/jefe_de_estudio/cursos";
@@ -275,7 +270,7 @@ public class JefeEControllers {
         public String editSituacionEscepcionalSubmit (@ModelAttribute("excepcional") SituacionExepcional excepcional){
                 excepcional.setFecha_resolucion(LocalDate.now());
                 situacionExepcionalService.edit(excepcional);
-                return "redirect:/jefe_de_estudio/";
+                return "redirect:/jefe_de_estudio/situacionExcep";
         }
         @GetMapping("/situacionExcepcional/download/{name}")
         public ResponseEntity<Resource> descargarFicheros (@PathVariable("name") String name){
@@ -323,8 +318,8 @@ public class JefeEControllers {
 
         @PostMapping("/tituloEdit/submit")
         public String tituloEditsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {
-
-                //tituloS.tituloFalse(titulo);
+                Titulo t=tituloS.findById(titulo.getId());
+                tituloS.tituloFalse(t);
                 tituloS.edit(titulo);
 
                 return "redirect:/jefe_de_estudio/titulos";

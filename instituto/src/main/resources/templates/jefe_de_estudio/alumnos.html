@@ -132,7 +132,7 @@
                                                 <th>Correo electronico</th>
                                                 <th>DNI</th>
                                                 <th>NºTeléfono</th>
-                                                <th>Estado</th>
+
                                                 <th>Editar</th>
 
                                             </tr>
@@ -145,22 +145,22 @@
                                                 <th>Correo electronico</th>
                                                 <th>DNI</th>
                                                 <th>NºTeléfono</th>
-                                                <th>Estado</th>
+
                                                 <th>Editar</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
 
                                         <tr th:each="alumno : ${listaAlumnos}">
-
+                                            <th:block th:if="${alumno.estado} ? true : false">
                                             <td th:text="${alumno.nombre}">Nombre</td>
                                             <td th:text="${alumno.apellidos}">apellidos</td>
                                             <td th:text="${alumno.email}">Email</td>
                                             <td th:text="${alumno.dni}">dni</td>
                                             <td th:text="${alumno.numeroTlf}">Telefono</td>
-                                            <td th:text="${alumno.estado}">Estado</td>
-                                            <td><a href="#"  th:href="@{alumnoEdit/{id}(id=${alumno.id})}">Editar</a></td>
 
+                                            <td><a href="#"  th:href="@{alumnoEdit/{id}(id=${alumno.id})}">Editar</a></td>
+                                            </th:block>
                                         </tr>
 
 

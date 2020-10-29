@@ -122,8 +122,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Curso</th>
-                                                <th>Estado</th>
+
                                                 <th>Editar</th>
 
                                             </tr>
@@ -131,19 +130,18 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Curso</th>
-                                                <th>Estado</th>
+
                                                 <th>Editar</th>
 
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                         <tr th:each="titulos : ${listaTitulos}">
-
+                                            <th:block th:if="${titulos.estado} ? true : false">
                                             <td th:text="${titulos.nombre}">Nombre</td>
-                                            <td th:text="${titulos.curso}">Curso</td>
-                                            <td th:text="${titulos.estado}">Estado</td>
+
                                             <td><a href="#"  th:href="@{tituloEdit/{id}(id=${titulos.id})}">Editar</a></td>
+                                            </th:block>
                                         </tr>
 
 

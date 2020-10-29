@@ -127,8 +127,7 @@
                                                 <th>DNI</th>
                                                 <th>NºTeléfono</th>
                                                 <th>JefeEstudio(si/no)</th>
-                                                <th>Validación</th>
-                                                <th>Estado(alta/baja)</th>
+
 
                                                 <th>Editar</th>
 
@@ -142,25 +141,24 @@
                                                 <th>DNI</th>
                                                 <th>NºTeléfono</th>
                                                 <th>JefeEstudio(si/no)</th>
-                                                <th>Validación</th>
-                                                <th>Estado(alta/baja)</th>
+
                                                 <th>Editar</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
 
                                         <tr th:each="docente : ${listaDocentes}">
-
+                                            <th:block th:if="${docente.estado} ? true : false">
                                             <td th:text="${docente.nombre}">Nombre</td>
                                             <td th:text="${docente.apellidos}">Apellidos</td>
                                             <td th:text="${docente.email}">Email</td>
                                             <td th:text="${docente.dni}">dni</td>
                                             <td th:text="${docente.numeroTlf}">Telefono</td>
                                             <td th:text="${docente.esJefeDeEstudio}">Jefe de estudio</td>
-                                            <td th:text="${docente.validacion}">Validación</td>
-                                            <td th:text="${docente.estado}">Validación</td>
-                                            <td><a href="#"  th:href="@{docenteEdit/{id}(id=${docente.id})}">Editar</a></td>
 
+
+                                            <td><a href="#"  th:href="@{docenteEdit/{id}(id=${docente.id})}">Editar</a></td>
+                                            </th:block>
                                         </tr>
 
                                         </tbody>

@@ -23,28 +23,41 @@ public class TituloService extends BaseService<Titulo,Long, TituloRepository> {
     AsignaturaService asignaturaService;
     @Autowired
     TituloService tituloService;
+    @Autowired
+    HorarioService horarioService;
 
-    public void tituloFalse(Titulo titulo,List<Curso> cursos,List<Asignatura> asig){
-        if (!titulo.isEstado()){
+    public void tituloFalse(Titulo titulo){
 
-            titulo.setEstado(false);
-
-        for (int i = 0; i < cursos.size(); i++) {
-            if(cursos.get(i).getTitulo()==titulo){
+       /* for (int i = 0; i < titulo.getCurso().size(); i++) {
+            if(titulo.getCurso().get(i).getTitulo()==titulo){
                 titulo.getCurso().get(i).setEstado(false);
 
             }
-        }
-        for (int j = 0; j < asig.size(); j++) {
-                if (!asig.get(j).getCurso().getEstado()){
-                    asig.get(j).setEstado(false);
+        }*/
+            for (Curso curso:
+                 titulo.getCurso()) {
+                for (Asignatura asig:
+                     curso.getAsignaturas()) {
+                    for (Horario hora:
+                         asig.getHorario()) {
+                        hora.setEsAlta(false);
+                        horarioService.edit(hora);
+                    }
+                    asig.setEstado(false);
+                    asignaturaService.edit(asig);
                 }
+                curso.setEstado(false);
+                cursoService.edit(curso);
+            }
+            titulo.setEstado(false);
+            tituloService.edit(titulo);
+
 
 
 
 
         }
 
-        }
+
     }
-}
+

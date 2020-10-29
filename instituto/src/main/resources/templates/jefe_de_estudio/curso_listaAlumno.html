@@ -157,7 +157,7 @@
                                         <tbody>
 
                                         <tr th:each="alumno : ${listaAlumnos}">
-
+                                            <th:block th:if="${alumno.estado} ? true : false">
                                             <td th:text="${alumno.nombre}">Nombre</td>
                                             <td th:text="${alumno.apellidos}">apellidos</td>
                                             <td th:text="${alumno.email}">Email</td>
@@ -165,7 +165,7 @@
                                             <td th:text="${alumno.numeroTlf}">Telefono</td>
                                             <td th:text="${alumno.curso.nombre}">Curso</td>
 
-
+                                            </th:block>
                                         </tr>
 
 
