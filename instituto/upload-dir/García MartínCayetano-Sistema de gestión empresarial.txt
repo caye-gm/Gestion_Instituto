@@ -1,0 +1,6 @@
+GetMapping("/situacionExcepcional/download/{nombre}")
+    public ResponseEntity<Resource> descargarFicheros (@PathVariable("nombre") String name){
+        Resource resource = fileSystemStorageService.loadAsResource(name);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +
+                resource.getFilename() + "\"").body(resource);
+    }
