@@ -7,6 +7,7 @@ Este proyecto realizado en Spring Boot
 
 Trata sobre la gestion de un instituto
 
+-Los demás usuario creados por defecto tienen de contraseña 1234 
 
 ## **Datos**
 
