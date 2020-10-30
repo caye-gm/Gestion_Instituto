@@ -97,7 +97,7 @@
                                     <div class="card-body">
 
 
-                                        <form th:object="${cursoEdit}" method="POST" action="#" th:action="${cursoEdit.id} == 0 ? @{/jefeEstudios/cursoCrear/submit} : @{/jefe_de_estudio/cursoEdit/submit}">
+                                        <form th:object="${cursoAdd}" method="POST" action="#" th:action="@{/jefe_de_estudio/cursoCrear/submit}">
 
                                             <input type="number" class="form-control invisible" placeholder="Introduce el nombre" name="id" id="id"  th:field="*{id}" readonly>
 

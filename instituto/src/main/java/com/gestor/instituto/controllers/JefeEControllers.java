@@ -132,15 +132,14 @@ public class JefeEControllers {
         public String cursosAdd(Model m) {
 
                 m.addAttribute("listaTitulos", tituloS.findAll());
-                m.addAttribute("cursoEdit", new Curso());
+                m.addAttribute("cursoAdd", new Curso());
 
-                return "/jefe_de_estudio/cursoEditar";
+                return "/jefe_de_estudio/cursoCrear";
         }
         @PostMapping("/cursoCrear/submit")
-        public String cursosAddSubmit(@ModelAttribute("cursoEdit") Curso curso,Model m) {
-
+        public String cursosAddSubmit(@ModelAttribute("cursoAdd") Curso curso,Model m) {
                 cursoS.save(curso);
-                return "/jefe_de_estudio/cursoEditar";
+                return "redirect:/jefe_de_estudio/cursos";
         }
         @GetMapping("/cursoEdit/{id}")
         public String cursosEdit(@PathVariable("id") long id,Model m) {
@@ -290,13 +289,13 @@ public class JefeEControllers {
         public String tituloAdd(Model m) {
 
                 m.addAttribute("listaTitulos", tituloS.findAll());
-                m.addAttribute("tituloEdit", new Curso());
+                m.addAttribute("tituloAdd", new Curso());
 
-                return "/jefe_de_estudio/tituloEditar";
+                return "/jefe_de_estudio/tituloCrear";
         }
 
         @PostMapping("/tituloCrear/submit")
-        public String tituloCrearsubmit(@ModelAttribute("tituloEdit") Titulo titulo) {
+        public String tituloCrearsubmit(@ModelAttribute("tituloAdd") Titulo titulo) {
 
 
                 tituloS.save(titulo);
